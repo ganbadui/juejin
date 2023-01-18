@@ -1,6 +1,4 @@
-import type { NextPage } from 'next';
-import { FC, ReactElement } from 'react';
-import { PropsWithChildren } from 'react';
+import { FC, ReactElement } from 'react'
 
 const Layout: FC<{ children: ReactElement }> = ({ children }) => {
   return (
@@ -8,7 +6,7 @@ const Layout: FC<{ children: ReactElement }> = ({ children }) => {
       全局Tab
       <main>{children}</main>
     </div>
-  );
-};
+  )
+}
 
-export default Layout;
+export default Layout

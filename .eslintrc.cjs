@@ -18,7 +18,6 @@ module.exports = {
   rules: {
     'prettier/prettier': 'error',
     quotes: ['error', 'single'],
-    semi: ['error', 'always'],
     '@typescript-eslint/no-non-null-assertion': 'off',
     'react/react-in-jsx-scope': 'off',
   },
