@@ -8,3 +8,4 @@ esm-cjs
 docs
 .commitlint.cjs
 next.config.js
+cz.config.js

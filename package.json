@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint --fix --ext .ts,.tsx,.js,.jsx --quiet ./",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "commit": "./node_modules/cz-customizable/standalone.js"
   },
   "dependencies": {
     "@next/font": "13.1.1",
@@ -27,6 +28,7 @@
     "@typescript-eslint/eslint-plugin": "^5.48.1",
     "@typescript-eslint/parser": "^5.48.1",
     "commitlint": "^17.4.2",
+    "cz-customizable": "^7.0.0",
     "eslint": "8.31.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-prettier": "^4.2.1",
@@ -41,5 +43,13 @@
     "**/*.{js,jsx,tsx,ts}": [
       "eslint --fix"
     ]
+  },
+   "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-customizable"
+    },
+    "cz-customizable": {
+      "config": "./.cz-config.js"
+    }
   }
 }
