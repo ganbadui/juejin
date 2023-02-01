@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 
-function index() {
-  return <div>index</div>;
+function NavBar() {
+  return <div>导航</div>
 }
 
-export default index;
+export default NavBar

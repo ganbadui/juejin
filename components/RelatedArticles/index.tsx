@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 
-function index() {
-  return <div>index</div>;
+const RelatedArticles = () => {
+  return <div>相关文章</div>
 }
 
-export default index;
+export default RelatedArticles

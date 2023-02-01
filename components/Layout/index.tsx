@@ -1,9 +1,10 @@
 import { FC, ReactElement } from 'react'
+import Tab from '../Tab'
 
 const Layout: FC<{ children: ReactElement }> = ({ children }) => {
   return (
     <div>
-      全局Tab
+      <Tab />
       <main>{children}</main>
     </div>
   )
