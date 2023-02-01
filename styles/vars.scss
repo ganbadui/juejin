@@ -1,0 +1,133 @@
+:root {
+    --juejin-c-white: #ffffff;
+    --juejin-c-white-soft: #f9f9f9;
+    --juejin-c-white-mute: #f1f1f1;
+  
+    --juejin-c-black: #1a1a1a;
+    --juejin-c-black-pure: #000000;
+    --juejin-c-black-soft: #242424;
+    --juejin-c-black-mute: #2f2f2f;
+  
+    --juejin-c-gray: #8e8e8e;
+    --juejin-c-gray-light-1: #aeaeae;
+    --juejin-c-gray-light-2: #c7c7c7;
+    --juejin-c-gray-light-3: #d1d1d1;
+    --juejin-c-gray-light-4: #e5e5e5;
+    --juejin-c-gray-light-5: #f2f2f2;
+    --juejin-c-gray-dark-1: #636363;
+    --juejin-c-gray-dark-2: #484848;
+    --juejin-c-gray-dark-3: #3a3a3a;
+    --juejin-c-gray-dark-4: #282828;
+    --juejin-c-gray-dark-5: #202020;
+  
+    --juejin-c-divider-light-1: rgba(60, 60, 60, 0.29);
+    --juejin-c-divider-light-2: rgba(60, 60, 60, 0.12);
+    --juejin-c-divider-dark-1: rgba(84, 84, 84, 0.65);
+    --juejin-c-divider-dark-2: rgba(84, 84, 84, 0.48);
+  
+    --juejin-c-indigo: #213547;
+    --juejin-c-indigo-soft: #476582;
+    --juejin-c-indigo-light: #aac8e4;
+    --juejin-c-indigo-lighter: #c9def1;
+    --juejin-c-indigo-dark: #1d2f3f;
+    --juejin-c-indigo-darker: #14212e;
+  
+    --juejin-c-text-light-1: var(--juejin-c-indigo);
+    --juejin-c-text-light-2: rgba(60, 60, 60, 0.7);
+    --juejin-c-text-light-3: rgba(60, 60, 60, 0.33);
+    --juejin-c-text-light-4: rgba(60, 60, 60, 0.18);
+  
+    --juejin-c-text-dark-1: rgba(255, 255, 255, 0.87);
+    --juejin-c-text-dark-2: rgba(235, 235, 235, 0.6);
+    --juejin-c-text-dark-3: rgba(235, 235, 235, 0.38);
+    --juejin-c-text-dark-4: rgba(235, 235, 235, 0.18);
+  
+    --juejin-c-green: #21b8a3;
+    --juejin-c-green-light: #41c6b0;
+    --juejin-c-green-lighter: #41c6b0;
+    --juejin-c-green-dark: #149684;
+    --juejin-c-green-darker: #149684;
+    --juejin-c-green-dimm: #062521;
+  
+    --juejin-c-green-dimm-1: rgba(66, 184, 131, 0.5);
+    --juejin-c-green-dimm-2: rgba(66, 184, 131, 0.25);
+    --juejin-c-green-dimm-3: rgba(66, 184, 131, 0.05);
+  
+    --juejin-c-blue: #646cff;
+    --juejin-c-blue-light: #747bff;
+    --juejin-c-blue-lighter: #9499ff;
+    --juejin-c-blue-lightest: #bcc0ff;
+    --juejin-c-blue-dark: #535bf2;
+    --juejin-c-blue-darker: #454ce1;
+    --juejin-c-blue-dimm: rgba(100, 108, 255, 0.08);
+  
+    --juejin-c-yellow: #ffc517;
+    --juejin-c-yellow-light: #fcd253;
+    --juejin-c-yellow-lighter: #fcfc7c;
+    --juejin-c-yellow-darker: #ad850e;
+    --juejin-c-yellow-dimm-1: rgba(255, 197, 23, 0.5);
+    --juejin-c-yellow-dimm-2: rgba(255, 197, 23, 0.25);
+    --juejin-c-yellow-dimm-3: rgba(255, 197, 23, 0.05);
+  
+    --juejin-c-red: #ed3c50;
+    --juejin-c-red-light: #f54e82;
+    --juejin-c-red-lighter: #fd1d7c;
+    --juejin-c-red-darker: #ab2131;
+    --juejin-c-red-dimm-1: rgba(237, 60, 80, 0.5);
+    --juejin-c-red-dimm-2: rgba(237, 60, 80, 0.25);
+    --juejin-c-red-dimm-3: rgba(237, 60, 80, 0.05);
+  }
+  
+  /**
+   * Colors Theme
+   * -------------------------------------------------------------------------- */
+  
+  :root {
+    --juejin-c-bg: var(--juejin-c-white);
+    --juejin-c-bg-soft: var(--juejin-c-white-soft);
+    --juejin-c-bg-mute: var(--juejin-c-white-mute);
+    --juejin-c-bg-alt: var(--juejin-c-white-soft);
+  
+    --juejin-c-divider: var(--juejin-c-divider-light-1);
+    --juejin-c-divider-light: var(--juejin-c-divider-light-2);
+  
+    --juejin-c-text-1: var(--juejin-c-text-light-1);
+    --juejin-c-text-2: var(--juejin-c-text-light-2);
+    --juejin-c-text-3: var(--juejin-c-text-light-3);
+    --juejin-c-text-4: var(--juejin-c-text-light-4);
+  
+    --juejin-c-text-code: var(--juejin-c-indigo-soft);
+  
+    --juejin-c-brand: var(--juejin-c-green);
+    --juejin-c-brand-light: var(--juejin-c-green-light);
+    --juejin-c-brand-lighter: var(--juejin-c-green-lighter);
+    --juejin-c-brand-dark: var(--juejin-c-green-dark);
+    --juejin-c-brand-darker: var(--juejin-c-green-darker);
+  }
+  
+  .dark {
+    --juejin-c-bg: var(--juejin-c-black-soft);
+    --juejin-c-bg-soft: var(--juejin-c-black-mute);
+    --juejin-c-bg-mute: var(--juejin-c-gray-dark-3);
+    --juejin-c-bg-alt: var(--juejin-c-black);
+  
+    --juejin-c-divider: var(--juejin-c-divider-dark-1);
+    --juejin-c-divider-light: var(--juejin-c-divider-dark-2);
+  
+    --juejin-c-divider-inverse: var(--juejin-c-divider-light-1);
+    --juejin-c-divider-inverse-light: var(--juejin-c-divider-light-2);
+  
+    --juejin-c-text-1: var(--juejin-c-text-dark-1);
+    --juejin-c-text-2: var(--juejin-c-text-dark-2);
+    --juejin-c-text-3: var(--juejin-c-text-dark-3);
+    --juejin-c-text-4: var(--juejin-c-text-dark-4);
+  
+    --juejin-c-text-inverse-1: var(--juejin-c-text-light-1);
+    --juejin-c-text-inverse-2: var(--juejin-c-text-light-2);
+    --juejin-c-text-inverse-3: var(--juejin-c-text-light-3);
+    --juejin-c-text-inverse-4: var(--juejin-c-text-light-4);
+  
+    --juejin-c-text-code: var(--juejin-c-indigo-lighter);
+  }
+  
+
