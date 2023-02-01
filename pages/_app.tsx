@@ -1,6 +1,5 @@
 import 'antd/dist/reset.css'
 import '../styles/global.scss'
-import '../styles/vars.scss'
 import Layout from '@/components/Layout'
 import { StoreProvider } from '@/store'
 import { NextPage } from 'next'
