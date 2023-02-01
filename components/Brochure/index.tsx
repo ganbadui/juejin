@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 
-function index() {
-  return <div>index</div>;
+function Brochure() {
+  return <div>小册</div>
 }
 
-export default index;
+export default Brochure

@@ -1,0 +1,35 @@
+.navbar {
+    height: 60px;
+    background-color: #fff;
+    border-bottom: 1px solid #f1f1f1;
+    display: flex;
+    align-items: center;
+  
+    .logoArea {
+      line-height: 55px;
+      display: flex;
+      margin-left: 60px;
+      margin-right: 10px;
+    }
+  
+    .linkArea {
+      a {
+        font-size: 14px;
+        padding: 0 20px;
+        color: #515767;
+      }
+  
+      .active {
+        color: #1e80ff;
+      }
+    }
+  
+    .operationArea {
+      margin-left: 150px;
+  
+      button {
+        margin-right: 20px;
+      }
+    }
+  }
+  

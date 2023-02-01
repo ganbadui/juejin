@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@ant-design/icons': ^5.0.1
   '@commitlint/cli': ^17.4.2
   '@commitlint/config-conventional': ^17.4.2
   '@next/font': 13.1.1
@@ -20,6 +21,7 @@ specifiers:
   eslint-plugin-react-hooks: ^4.6.0
   husky: ^8.0.3
   lint-staged: ^13.1.0
+  mobx-react-lite: ^3.4.0
   next: 13.1.1
   prettier: ^2.8.3
   react: 18.2.0
@@ -28,9 +30,11 @@ specifiers:
   typescript: 4.9.4
 
 dependencies:
+  '@ant-design/icons': 5.0.1_biqbaboplfbrettd7655fr4n2y
   '@next/font': 13.1.1
   antd: 5.1.4_biqbaboplfbrettd7655fr4n2y
   axios: 1.2.2
+  mobx-react-lite: 3.4.0_jofyzmwkboewm6mjrhi25mngky
   next: 13.1.1_3duxcpitbtplz62feflag7fwby
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -64,6 +68,12 @@ packages:
       '@ctrl/tinycolor': 3.5.0
     dev: false
 
+  /@ant-design/colors/7.0.0:
+    resolution: {integrity: sha512-iVm/9PfGCbC0dSMBrz7oiEXZaaGH7ceU40OJEfKmyuzR9R5CRimJYPlRiFtMQGQcbNMea/ePcoIebi4ASGYXtg==}
+    dependencies:
+      '@ctrl/tinycolor': 3.5.0
+    dev: false
+
   /@ant-design/cssinjs/1.4.0_biqbaboplfbrettd7655fr4n2y:
     resolution: {integrity: sha512-siFyX5VyiJWKBQAffI8zE0WZ4OWfI35QnqesbtHaVg49QxHFAcFN9VbJ+Qoos24JxABcxfopEwMWe2joZ2QVBQ==}
     peerDependencies:
@@ -93,6 +103,22 @@ packages:
       react-dom: '>=16.0.0'
     dependencies:
       '@ant-design/colors': 6.0.0
+      '@ant-design/icons-svg': 4.2.1
+      '@babel/runtime': 7.20.7
+      classnames: 2.3.2
+      rc-util: 5.27.1_biqbaboplfbrettd7655fr4n2y
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
+
+  /@ant-design/icons/5.0.1_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-ZyF4ksXCcdtwA/1PLlnFLcF/q8/MhwxXhKHh4oCHDA4Ip+ZzAHoICtyp4wZWfiCVDP0yuz3HsjyvuldHFb3wjA==}
+    engines: {node: '>=8'}
+    peerDependencies:
+      react: '>=16.0.0'
+      react-dom: '>=16.0.0'
+    dependencies:
+      '@ant-design/colors': 7.0.0
       '@ant-design/icons-svg': 4.2.1
       '@babel/runtime': 7.20.7
       classnames: 2.3.2
@@ -2624,6 +2650,28 @@ packages:
     dependencies:
       minimist: 1.2.7
     dev: true
+
+  /mobx-react-lite/3.4.0_jofyzmwkboewm6mjrhi25mngky:
+    resolution: {integrity: sha512-bRuZp3C0itgLKHu/VNxi66DN/XVkQG7xtoBVWxpvC5FhAqbOCP21+nPhULjnzEqd7xBMybp6KwytdUpZKEgpIQ==}
+    peerDependencies:
+      mobx: ^6.1.0
+      react: ^16.8.0 || ^17 || ^18
+      react-dom: '*'
+      react-native: '*'
+    peerDependenciesMeta:
+      react-dom:
+        optional: true
+      react-native:
+        optional: true
+    dependencies:
+      mobx: 6.7.0
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
+
+  /mobx/6.7.0:
+    resolution: {integrity: sha512-1kBLBdSNG2bA522HQdbsTvwAwYf9hq9FWxmlhX7wTsJUAI54907J+ozfGW+LoYUo06vjit748g6QH1AAGLNebw==}
+    dev: false
 
   /ms/2.1.2:
     resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==}

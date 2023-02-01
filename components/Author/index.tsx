@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 
-function index() {
-  return <div>index</div>;
+function Author() {
+  return <div>作者信息</div>
 }
 
-export default index;
+export default Author
