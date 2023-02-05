@@ -1,7 +1,5 @@
 import React from 'react'
 
-function Author() {
-  return <div>作者信息</div>
+export const Author: React.FC = () => {
+  return <div>Author</div>
 }
-
-export default Author

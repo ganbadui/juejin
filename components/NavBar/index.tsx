@@ -1,7 +1,5 @@
 import React from 'react'
 
-function NavBar() {
+export const NavBar: React.FC = () => {
   return <div>导航</div>
 }
-
-export default NavBar

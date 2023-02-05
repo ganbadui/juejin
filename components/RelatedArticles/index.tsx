@@ -1,7 +1,5 @@
 import React from 'react'
 
-const RelatedArticles = () => {
+export const RelatedArticles: React.FC = () => {
   return <div>相关文章</div>
 }
-
-export default RelatedArticles
