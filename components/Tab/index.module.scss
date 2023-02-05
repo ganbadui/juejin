@@ -1,11 +1,18 @@
 @import "../../styles/media.scss";
 
 .navbar {
-  height: 60px;
-  background-color: var(--juejin-c-bg);
-  border-bottom: 1px solid #f1f1f1;
   display: flex;
   align-items: center;
+  z-index: 250;
+  color: #909090;
+  height: 5rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  transition: all 0.2s;
+  background-color: var(--juejin-c-header);
+  border-bottom: 0.0833rem solid #f1f1f1;
   justify-content: space-between;
 
   .wrppper {
@@ -13,16 +20,16 @@
     align-items: center;
 
     .logoArea {
-      line-height: 55px;
+      line-height: 4.5833rem;
       display: flex;
-      margin-left: 60px;
-      margin-right: 10px;
+      margin-left: 5rem;
+      margin-right: 0.8333rem;
     }
 
     .linkArea {
       a {
-        font-size: 14px;
-        padding: 0 17px;
+        font-size: 1.1667rem;
+        padding: 0 1.4167rem;
         color: var(--juejin-c-text-1);
       }
 
@@ -34,10 +41,11 @@
 
   .mobile {
     display: none;
-    margin-left: 40px;
+    margin-left: 3.3333rem;
+    font-size: 1.3333rem;
 
     img {
-      margin-right: 10px;
+      margin-right: 0.8333rem;
     }
 
     .arrow {
@@ -56,7 +64,7 @@
   }
 
   .themebutton {
-    margin-right: 50px;
+    margin-right: 4.1667rem;
   }
 }
 
@@ -80,7 +88,7 @@
           left: 0;
           height: 2px;
           background-color: #1e80ff;
-          width: 28px;
+          width: 2.3333rem;
           margin: auto;
         }
       }
