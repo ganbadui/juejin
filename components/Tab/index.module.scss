@@ -1,3 +1,5 @@
+@import "../../styles/media.scss";
+
 .navbar {
   height: 60px;
   background-color: var(--juejin-c-bg);
@@ -20,7 +22,7 @@
     .linkArea {
       a {
         font-size: 14px;
-        padding: 0 20px;
+        padding: 0 17px;
         color: var(--juejin-c-text-1);
       }
 
@@ -28,17 +30,96 @@
         color: #1e80ff;
       }
     }
+  }
 
-    .operationArea {
-      margin-left: 150px;
+  .mobile {
+    display: none;
+    margin-left: 40px;
 
-      button {
-        margin-right: 20px;
+    img {
+      margin-right: 10px;
+    }
+
+    .arrow {
+      margin-left: 2px;
+      .low {
+        fill: #515767;
+        transform: rotate(0deg);
+        transition: transform 0.2s ease-in-out;
+      }
+
+      .up {
+        fill: #1e80ff;
+        transform: rotate(-180deg);
       }
     }
   }
 
   .themebutton {
     margin-right: 50px;
+  }
+}
+
+.overlay {
+  width: 9rem;
+  text-align: center;
+  ul {
+    background-color: var(--juejin-c-bg) !important;
+    li {
+      background-color: var(--juejin-c-bg) !important;
+      color: var(--juejin-c-text-1) !important;
+      text-align: center !important;
+
+      &:hover {
+        span > a::before {
+          content: "";
+          position: absolute;
+          top: auto;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          height: 2px;
+          background-color: #1e80ff;
+          width: 28px;
+          margin: auto;
+        }
+      }
+    }
+  }
+}
+
+@include media-mini-mobile {
+  .navbar {
+    .wrppper {
+      display: none;
+    }
+
+    .mobile {
+      display: block;
+    }
+  }
+}
+
+@include media-mobile {
+  .navbar {
+    .wrppper {
+      display: none;
+    }
+
+    .mobile {
+      display: block;
+    }
+  }
+}
+
+@include media-between-mini-and-normal-mobile {
+  .navbar {
+    .wrppper {
+      display: none;
+    }
+
+    .mobile {
+      display: block;
+    }
   }
 }
