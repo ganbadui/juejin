@@ -9,7 +9,7 @@ export const navs = [
   },
   {
     label: '课程',
-    value: '/class'
+    value: '/course'
   },
   {
     label: '直播',

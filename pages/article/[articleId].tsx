@@ -1,4 +1,3 @@
-import NavBar from '@/components/NavBar'
 import { useStore } from '@/store'
 import { observer } from 'mobx-react-lite'
 import { GetServerSideProps, NextPage } from 'next'
