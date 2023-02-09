@@ -1,5 +1,6 @@
 import React from 'react'
 import ArticleList from './articleList'
+import { Author } from '@/components'
 import styles from './index.module.scss'
 export default function Home() {
   return (
@@ -7,7 +8,7 @@ export default function Home() {
       <div className={styles.container}>
         <nav className={styles.nav} />
         <div className={styles.content}>
-          <ArticleList />
+          <Author />
           <aside className={styles.aside} />
         </div>
       </div>
