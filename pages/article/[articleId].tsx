@@ -1,7 +1,11 @@
 import { useStore } from '@/store'
 import { observer } from 'mobx-react-lite'
+import { Author } from '@/components'
+import styles from './index.module.scss'
+import { Layout } from 'antd'
 import { GetServerSideProps, NextPage } from 'next'
 
+const { Content, Sider } = Layout
 interface IProps {
   articleId: number
 }
@@ -12,9 +16,14 @@ const Article: NextPage<IProps> = ({ articleId }) => {
   const demo = store.demo.demoInfo
 
   return (
-    <div>
-      <h1>文章{articleId}</h1>
-      <main>内容:{demo.value}</main>
+    <div className={styles.article}>
+      <div className={styles.content}>
+        <h1>文章{articleId}</h1>
+        <main>内容:{demo.value}</main>
+      </div>
+      <div className={styles.sider}>
+        <Author />
+      </div>
     </div>
   )
 }

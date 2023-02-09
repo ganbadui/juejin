@@ -1,7 +1,7 @@
 @import "../../styles/media.scss";
 
 .container {
-    width: 18.25rem;
+    width: 20.25rem;
     height: 7.3rem;
     background-color: var(--juejin-c-header);
     padding: 1.5rem;
@@ -35,13 +35,6 @@
 @include media-mobile {
     .container {
         width: 90%;
-        margin: 0 auto;
-    }
-}
-
-@include media-mini-mobile {
-    .container {
-        width: 100%;
         margin: 0 auto;
     }
 }
