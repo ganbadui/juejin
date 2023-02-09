@@ -4,6 +4,7 @@ import { Author } from '@/components'
 import styles from './index.module.scss'
 import { Layout } from 'antd'
 import { GetServerSideProps, NextPage } from 'next'
+import RelatedArticles from '@/components/RelatedArticles'
 
 const { Content, Sider } = Layout
 interface IProps {
@@ -23,6 +24,7 @@ const Article: NextPage<IProps> = ({ articleId }) => {
       </div>
       <div className={styles.sider}>
         <Author />
+        <RelatedArticles />
       </div>
     </div>
   )

@@ -9,9 +9,8 @@ interface IArticles {
   lover: number
   comment: number
 }
-export interface IProps {
+interface IProps {
   children?: ReactElement
-  Articles: IArticles
 }
 const RelatedArticles: FC<IProps> = memo(props => {
   const { children } = props
