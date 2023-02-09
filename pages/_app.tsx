@@ -1,5 +1,5 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import 'antd/dist/reset.css'
+import '../styles/global.scss'
 import Layout from '@/components/Layout'
 import { StoreProvider } from '@/store'
 import { NextPage } from 'next'

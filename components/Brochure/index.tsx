@@ -1,7 +1,9 @@
 import React from 'react'
 
-function Brochure() {
-  return <div>小册</div>
+export const Brochure: React.FC = () => {
+  return (
+    <div>
+      <h1>Brochure</h1>
+    </div>
+  )
 }
-
-export default Brochure
