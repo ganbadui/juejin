@@ -1,7 +1,20 @@
 import React from 'react'
-
-function Author() {
-  return <div>作者信息</div>
+import styles from './index.module.scss'
+interface userInfo {
+  userName: string
+  occupation: string
+  introduce: string
+  author?: object
 }
-
-export default Author
+//todo 对接接口，prop传数据进来
+export const Author: React.FC = () => {
+  return (
+    <div className={styles.container}>
+      <div className={styles.head}></div>
+      <div className={styles.content}>
+        <div className={styles.username}>杨鹏</div>
+        <div className={styles.introduce}>大二在读 加油</div>
+      </div>
+    </div>
+  )
+}
