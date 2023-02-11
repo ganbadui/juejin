@@ -2,16 +2,8 @@ import React, { useEffect, useState } from 'react'
 import styles from './index.module.scss'
 
 import { EyeOutlined, LikeOutlined, MessageOutlined } from '@ant-design/icons'
-import { Avatar, List, Space, message } from 'antd'
+import { List, Space, message } from 'antd'
 import VirtualList from 'rc-virtual-list'
-
-const data = Array.from({ length: 23 }).map((_, i) => ({
-  href: 'https://ant.design',
-  title: `ant design part ${i}`,
-  avatar: 'https://joeschmoe.io/api/v1/random',
-  content:
-    'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.'
-}))
 
 const IconText = ({ icon, text }: { icon: React.FC; text: string }) => (
   <Space>
@@ -21,26 +13,31 @@ const IconText = ({ icon, text }: { icon: React.FC; text: string }) => (
 )
 
 interface ListItem {
-  href: string
+  id: number
   title: string
   avatar: string
   content: string
 }
 
-const fakeDataUrl =
-  'https://randomuser.me/api/?results=20&inc=name,gender,email,nat,picture&noinfo'
-const ContainerHeight = 400
+// 内容高度，用于判断是否滚动到底部
+const ContainerHeight = 1000
 const ArticleList: React.FC = () => {
   const [data, setData] = useState<ListItem[]>([])
 
-  const appendData = () => {
-    fetch(fakeDataUrl)
-      .then(res => res.json())
-      .then(body => {
-        setData(data.concat(body.results))
-        message.success(`${body.results.length} more items loaded!`)
-      })
-  }
+  //设置假数据
+  useEffect(() => {
+    const data = Array.from({ length: 100 }).map((_, i) => ({
+      id: i,
+      title: `ant design part ${i}`,
+      avatar:
+        'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png',
+      content: 'aas tsete'
+    }))
+    setData(data)
+  }, [])
+
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  const appendData = () => {}
 
   useEffect(() => {
     appendData()
@@ -54,26 +51,38 @@ const ArticleList: React.FC = () => {
     }
   }
 
+  const [active, setActive] = useState('推荐')
+  const listData = ['推荐', '最新', '最热']
+  const handleClick = (label: string) => {
+    setActive(label)
+    //todo: 请求数据
+  }
   return (
     <div className={styles.articleList}>
       <header className={`${styles.list_header}`}>
-        <span>推荐</span>
-        <span>最新</span>
-        <span>最热</span>
+        {listData.map(label => (
+          <span
+            key={label}
+            onClick={() => handleClick(label)}
+            className={active === label ? `${styles.active}` : ''}
+          >
+            {label}
+          </span>
+        ))}
       </header>
 
       <div className={styles.list_content}>
         <List itemLayout="vertical" size="large">
           <VirtualList
             data={data}
-            height={ContainerHeight}
             itemHeight={47}
+            height={ContainerHeight}
             onScroll={onScroll}
             itemKey="item.title"
           >
             {(item: ListItem) => (
               <List.Item
-                key={item.title}
+                key={item.id}
                 actions={[
                   <IconText
                     icon={EyeOutlined}
@@ -91,15 +100,9 @@ const ArticleList: React.FC = () => {
                     key="list-vertical-message"
                   />
                 ]}
-                extra={
-                  <img
-                    width={272}
-                    alt="logo"
-                    src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
-                  />
-                }
+                extra={<img width={272} alt="logo" src={item.avatar} />}
               >
-                <List.Item.Meta title={<a href={item.href}>{item.title}</a>} />
+                <List.Item.Meta title={item.title} />
                 {item.content}
               </List.Item>
             )}
