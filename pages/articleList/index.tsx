@@ -4,13 +4,7 @@ import styles from './index.module.scss'
 import { EyeOutlined, LikeOutlined, MessageOutlined } from '@ant-design/icons'
 import { List, Space, message } from 'antd'
 import VirtualList from 'rc-virtual-list'
-
-const IconText = ({ icon, text }: { icon: React.FC; text: string }) => (
-  <Space>
-    {React.createElement(icon)}
-    {text}
-  </Space>
-)
+import Link from 'next/link'
 
 interface ListItem {
   id: number
@@ -18,9 +12,14 @@ interface ListItem {
   avatar: string
   content: string
 }
-
+const IconText = ({ icon, text }: { icon: React.FC; text: string }) => (
+  <Space>
+    {React.createElement(icon)}
+    {text}
+  </Space>
+)
 // 内容高度，用于判断是否滚动到底部
-const ContainerHeight = 1000
+const ContainerHeight = 2531
 const ArticleList: React.FC = () => {
   const [data, setData] = useState<ListItem[]>([])
 
@@ -28,7 +27,7 @@ const ArticleList: React.FC = () => {
   useEffect(() => {
     const data = Array.from({ length: 100 }).map((_, i) => ({
       id: i,
-      title: `ant design part ${i}`,
+      title: `我被骂了，但我学会了如何构造高性能的树状结构🔥${i}`,
       avatar:
         'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png',
       content: 'aas tsete'
@@ -58,7 +57,7 @@ const ArticleList: React.FC = () => {
     //todo: 请求数据
   }
   return (
-    <div className={styles.articleList}>
+    <div className={styles.articleList} onScroll={onScroll}>
       <header className={`${styles.list_header}`}>
         {listData.map(label => (
           <span
@@ -77,7 +76,6 @@ const ArticleList: React.FC = () => {
             data={data}
             itemHeight={47}
             height={ContainerHeight}
-            onScroll={onScroll}
             itemKey="item.title"
           >
             {(item: ListItem) => (
@@ -100,10 +98,20 @@ const ArticleList: React.FC = () => {
                     key="list-vertical-message"
                   />
                 ]}
-                extra={<img width={272} alt="logo" src={item.avatar} />}
+                extra={
+                  <img width={120} height={80} alt="logo" src={item.avatar} />
+                }
+                className={styles.list_item}
               >
-                <List.Item.Meta title={item.title} />
-                {item.content}
+                <div className="list_item_header">
+                  <span>test</span>
+                  <span>一个月前</span>
+                  <span>分类.标签</span>
+                </div>
+                <List.Item.Meta
+                  title={<Link href={''}>{item.title}</Link>}
+                  description={item.content}
+                />
               </List.Item>
             )}
           </VirtualList>
