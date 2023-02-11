@@ -1,0 +1,39 @@
+@import '../../../../styles/media.scss';
+.container {
+  width: 17.5rem;
+  height: 5rem;
+  background-color: var(--juejin-c-header);
+  padding: 0.6667rem;
+  display: flex;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.01);
+  }
+
+  .head {
+    background-color: #888;
+    border-radius: 2rem;
+    width: 4rem;
+    margin-right: 1.125rem;
+  }
+
+  .content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    .username {
+      flex: 1;
+      font-size: 14px;
+    }
+
+    .introduce {
+      flex: 1;
+    }
+  }
+}
+@include media-mobile {
+  .container {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
