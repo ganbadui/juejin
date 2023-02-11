@@ -18,7 +18,7 @@
       font-size: 1.16rem;
       border-right: 1px solid hsla(0, 0%, 59.2%, 0.2);
 
-      &::hover {
+      &:hover {
         color: #007fff;
       }
 
@@ -26,6 +26,9 @@
         border: none;
       }
     }
+         .active {
+           color: #007fff;
+         }
   }
 
   .list_content {

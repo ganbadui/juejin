@@ -17,6 +17,7 @@
     "axios": "^1.2.2",
     "github-markdown-css": "^5.2.0",
     "markdown-navbar": "^1.4.3",
+    "mobx": "^6.7.0",
     "mobx-react-lite": "^3.4.0",
     "next": "13.1.1",
     "rc-virtual-list": "^3.4.13",
