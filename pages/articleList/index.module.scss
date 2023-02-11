@@ -2,6 +2,7 @@
   margin-right: 21.667rem;
   border-radius: 2px;
   width: 700px;
+  height: auto;
   background: #fff;
 
   .list_header {
@@ -26,14 +27,28 @@
         border: none;
       }
     }
-         .active {
-           color: #007fff;
-         }
+    .active {
+      color: #007fff;
+    }
   }
 
-  .list_content {
-    width: 100%;
-    background-color: #fff;
-    position: relative;
+  .list_item {
+    height: 140px;
+
+    .list_item_meta > ant-list-item-meta-title {
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 24px;
+      color: #1d2129;
+    }
+  }
+  .list_item_header {
+    display: flex;
+    align-items: center;
+    color: #86909c;
+    margin-right: 8px;
+    max-width: 162px;
+    font-size: 13px;
+    line-height: 22px;
   }
 }
