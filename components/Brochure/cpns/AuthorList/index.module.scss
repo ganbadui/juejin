@@ -1,0 +1,29 @@
+@import '../../../../styles/media.scss';
+.authorlist {
+  margin-bottom: 1.3333rem;
+  background-color: var(--juejin-c-header);
+  border: 0.1667rem solid var(--juejin-c-bg-soft);
+  .bac {
+    background-color: var(--juejin-c-header);
+  }
+  .item {
+    padding: 1rem 1.25rem;
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.01);
+    }
+  }
+  .more {
+    color: #007fff;
+    text-align: center;
+    .top {
+      padding: 1.25rem;
+      border-top: 1px solid #e6e4e4;
+    }
+  }
+}
+@include media-mobile {
+  .authorlist {
+    width: 90%;
+    margin: 0 auto;
+  }
+}

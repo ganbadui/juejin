@@ -1,0 +1,10 @@
+@import '../../../../styles/media.scss';
+.arts {
+  margin-bottom: 1.3333rem;
+}
+@include media-mobile {
+  .arts {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
