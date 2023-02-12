@@ -1,0 +1,55 @@
+@import '../../../../styles/media.scss';
+.footer {
+  display: block;
+  width: 20rem;
+  margin-bottom: 1.3333rem;
+  padding: 1.3333rem;
+  background-color: var(--juejin-c-header);
+  border: 0.1667rem solid var(--juejin-c-bg-soft);
+
+  .content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    .time {
+      display: flex;
+      flex-direction: column;
+
+      .good {
+        font-size: 1.3333rem;
+        font-weight: 600;
+        line-height: 2rem;
+      }
+
+      .slogal {
+        line-height: 2rem;
+      }
+    }
+
+    .attend {
+      border-radius: 0.3333rem;
+      height: 3rem;
+      width: 6.1667rem;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(30, 128, 255, 0.3);
+      background-color: rgba(30, 128, 255, 0.05);
+      cursor: pointer;
+      span {
+        color: #267ff3;
+        font-size: 1.1667rem;
+        white-space: nowrap;
+      }
+    }
+  }
+}
+@include media-mobile {
+  .footer {
+    width: 90%;
+    margin: 0 auto;
+  }
+}

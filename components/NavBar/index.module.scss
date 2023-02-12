@@ -1,0 +1,46 @@
+.navContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 960px;
+  height: 100%;
+  margin: auto;
+  user-select: none;
+
+  .navList {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    align-items: center;
+    line-height: 1;
+  }
+
+  .navItem {
+    list-style: none;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    font-size: 1.16rem;
+    color: #71777c;
+    padding: 0 1rem;
+
+    &:first-child {
+      padding-left: 0;
+    }
+
+    &:last-child {
+      padding-right: 0;
+    }
+
+    &:hover {
+      color: #007fff;
+    }
+  }
+
+  .ant-list-item {
+    height: 140px;
+  }
+}
