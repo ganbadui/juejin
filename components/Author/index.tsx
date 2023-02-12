@@ -10,7 +10,7 @@ interface userInfo {
 export const Author: React.FC = () => {
   return (
     <div className={styles.container}>
-      <div className={styles.head}></div>
+      <img className={styles.head}></img>
       <div className={styles.content}>
         <div className={styles.username}>杨鹏</div>
         <div className={styles.introduce}>大二在读 加油</div>

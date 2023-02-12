@@ -2,7 +2,7 @@ import React, { memo, ReactElement } from 'react'
 import type { FC } from 'react'
 import { Card, Space } from 'antd'
 import Link from 'next/link'
-import { Authors } from '../Authors'
+import { Author } from '../../../Author/index'
 import styles from './index.module.scss'
 import { RightOutlined } from '@ant-design/icons'
 export interface IProps {
@@ -19,13 +19,13 @@ const AuthorList: FC<IProps> = memo(props => {
         className={styles.bac}
       >
         <div className={styles.item}>
-          <Authors></Authors>
+          <Author></Author>
         </div>
         <div className={styles.item}>
-          <Authors></Authors>
+          <Author></Author>
         </div>
         <div className={styles.item}>
-          <Authors></Authors>
+          <Author></Author>
         </div>
 
         <Link href="#" className={styles.more}>

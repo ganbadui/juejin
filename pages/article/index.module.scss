@@ -33,19 +33,18 @@
             margin-top: 2rem;
             border: 1px solid var(--juejin-c-bg-soft);
 
-            &>&.title-anchor {
-                display: block;
-                transition: all 0.2s;
-                margin: 0.8em 0;
-                font-weight: lighter;
-                line-height: 2em;
-                padding-right: 1.8em;
-                cursor: pointer;
-                color: var(--juejin-c-text-1);
-            }
+            :global {
+                .title-anchor {
+                    color: var(--juejin-c-text-1);
 
-            &>.active {
-                background-color: var(--juejin-c-header);
+                    &:hover {
+                        background-color: var(--juejin-c-text-4)
+                    }
+                }
+
+                .active {
+                    background-color: var(--juejin-c-text-2);
+                }
             }
         }
     }
