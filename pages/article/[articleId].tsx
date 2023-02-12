@@ -1,5 +1,3 @@
-import { useStore } from '@/store'
-import { observer } from 'mobx-react-lite'
 import { Author } from '@/components'
 import MarkNav from 'markdown-navbar'
 import { useState, useEffect } from 'react'
@@ -10,15 +8,13 @@ import 'markdown-navbar/dist/navbar.css'
 import styles from './index.module.scss'
 import { GetServerSideProps, NextPage } from 'next'
 import RelatedArticles from '@/components/RelatedArticles'
+import fetch from '@/service/fetch'
 
 interface IProps {
   articleId: number
 }
 
 const Article: NextPage<IProps> = ({ articleId }) => {
-  const store = useStore()
-
-  const demo = store.demo.demoInfo
   // const [md, changeMd] = useState()
   return (
     <div className={styles.article}>
@@ -47,6 +43,7 @@ const Article: NextPage<IProps> = ({ articleId }) => {
 // 服务端获取数据
 export const getServerSideProps: GetServerSideProps = async context => {
   const { articleId } = context.query
+
   return {
     props: {
       articleId
@@ -54,4 +51,4 @@ export const getServerSideProps: GetServerSideProps = async context => {
   }
 }
 
-export default observer(Article)
+export default Article

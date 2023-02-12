@@ -1,25 +1,31 @@
-import React, { createContext, ReactElement, useContext } from 'react'
-import { useLocalObservable, enableStaticRendering } from 'mobx-react-lite'
-import createStore, { IStore } from './modules/rootStore'
+import { createContext, useContext } from 'react'
 
-interface IProps {
-  initialValue: Record<any, any>
-  children: ReactElement
+interface Nav {
+  label: string
+  value: string
+}
+interface IContextProps {
+  tags: Nav[]
 }
 
-enableStaticRendering(typeof window === 'undefined')
+interface IProps {
+  children: JSX.Element
+  initialValue: any
+}
 
-const StoreContext = createContext({})
+const storeContext = createContext<IContextProps>({ tags: [] })
 
-export const StoreProvider = ({ initialValue, children }: IProps) => {
-  const store: IStore = useLocalObservable(createStore(initialValue))
-  return <StoreContext.Provider value={store}>{children}</StoreContext.Provider>
+export const StoreProvider = ({
+  children,
+  initialValue
+}: IProps): JSX.Element => {
+  return (
+    <storeContext.Provider value={initialValue}>
+      {children}
+    </storeContext.Provider>
+  )
 }
 
 export const useStore = () => {
-  const store: IStore = useContext(StoreContext) as IStore
-  if (!store) {
-    throw new Error('数据不存在')
-  }
-  return store
+  return useContext(storeContext)
 }

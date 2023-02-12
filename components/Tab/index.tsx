@@ -4,21 +4,23 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import styles from './index.module.scss'
-import { navs } from './config'
 import { SwitchButton } from './cpns/SwitchButton'
 import type { MenuProps } from 'antd'
 import { Dropdown } from 'antd'
-// import request from '@/service/fetch'
+// import { tags } from './config'
+import { useStore } from '@/store'
 
 const Tab: NextPage = () => {
+  const { tags } = useStore()
+
   const { pathname } = useRouter()
   const [arrow, setArrow] = useState('low')
 
   const getActive = () => {
-    return navs.find(item => item.value === pathname)?.label
+    return tags.find(item => item.value === pathname)?.label
   }
 
-  const navsMobile: MenuProps['items'] = navs?.map(nav => {
+  const tagsMobile: MenuProps['items'] = tags?.map(nav => {
     return {
       key: nav.label,
       label: (
@@ -43,7 +45,7 @@ const Tab: NextPage = () => {
             <Image src="/logo.svg" width={107} height={22} alt="图片加载失败" />
           </section>
           <section className={styles.linkArea}>
-            {navs?.map(nav => (
+            {tags?.map(nav => (
               <Link
                 key={nav?.label}
                 href={nav?.value}
@@ -60,7 +62,7 @@ const Tab: NextPage = () => {
           <Image src="/mobile.svg" width={31} height={24} alt="图片加载失败" />
           <Dropdown
             menu={{
-              items: navsMobile,
+              items: tagsMobile,
               selectable: true,
               defaultSelectedKeys: ['首页']
             }}
