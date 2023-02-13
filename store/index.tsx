@@ -3,6 +3,7 @@ import { createContext, useContext } from 'react'
 interface Nav {
   label: string
   value: string
+  isActive?: boolean
 }
 interface IContextProps {
   tags: Nav[]

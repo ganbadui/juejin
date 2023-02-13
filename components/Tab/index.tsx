@@ -7,7 +7,6 @@ import styles from './index.module.scss'
 import { SwitchButton } from './cpns/SwitchButton'
 import type { MenuProps } from 'antd'
 import { Dropdown } from 'antd'
-// import { tags } from './config'
 import { useStore } from '@/store'
 
 const Tab: NextPage = () => {
@@ -53,6 +52,9 @@ const Tab: NextPage = () => {
                 style={{ textAlign: 'center' }}
               >
                 {nav?.label}
+                {nav?.isActive ? (
+                  <span className={styles.tablead}>码上报名</span>
+                ) : null}
               </Link>
             ))}
           </section>
