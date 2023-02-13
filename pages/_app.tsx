@@ -4,6 +4,7 @@ import Layout from '@/components/Layout'
 import { StoreProvider } from '@/store'
 import { NextPage } from 'next'
 import ErrorBoundary from '@/components/ErrorBoundary'
+import service from '@/service/fetch'
 
 interface IProps {
   initialValue: Record<any, any>
@@ -24,12 +25,11 @@ function App({ Component, pageProps, initialValue }: IProps) {
 }
 
 App.getInitialProps = async ({ ctx }: { ctx: any }) => {
+  const tags = await service.get('api/tags')
+
   return {
     initialValue: {
-      demo: {
-        value: 'value',
-        state: 'state'
-      }
+      tags: tags
     }
   }
 }
