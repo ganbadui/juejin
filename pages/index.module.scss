@@ -1,3 +1,4 @@
+@import '../styles/media.scss';
 .Home {
   position: relative;
   width: 100%;
@@ -62,5 +63,10 @@
         display: none;
       }
     }
+  }
+}
+@include media-mobile {
+  .rightcontent {
+    display: none;
   }
 }
