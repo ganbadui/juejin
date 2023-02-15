@@ -44,13 +44,6 @@
       margin-top: 0.33rem;
     }
 
-    .aside {
-      width: 20rem;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      right: 0;
-    }
     .rightcontent {
       width: 20rem;
       height: 100%;
@@ -59,7 +52,7 @@
       right: 0;
     }
     @media (max-width: 960px) {
-      .aside {
+      .rightcontent {
         display: none;
       }
     }
