@@ -1,7 +1,7 @@
 import { Author } from '@/components'
 import { userInfo } from '@/components/Author'
 import MarkNav from 'markdown-navbar'
-import { md } from './config'
+import { md } from '../../hooks/config'
 import ReactMarkdown from 'react-markdown'
 import 'github-markdown-css'
 import 'markdown-navbar/dist/navbar.css'
