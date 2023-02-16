@@ -31,6 +31,35 @@
         font-size: 1.1667rem;
         padding: 0 1.4167rem;
         color: var(--juejin-c-text-1);
+        position: relative;
+        &:hover {
+          &::after {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 2.5rem;
+            height: 2px;
+            left: 1.4167rem;
+            background-color: #1e80ff;
+            clear: both;
+          }
+        }
+        .tablead {
+          position: absolute;
+          top: -1.3333rem;
+          left: 0.5833rem;
+          z-index: 9;
+          white-space: nowrap;
+          padding: 0.1667rem 0.5833rem;
+          background-color: #ee502f;
+          border-radius: 4.1667rem;
+          text-align: center;
+          font-weight: 500;
+          font-size: 1.3333rem;
+          transform: scale(0.5);
+          line-height: 1.5rem;
+          color: #fff;
+        }
       }
 
       .active {

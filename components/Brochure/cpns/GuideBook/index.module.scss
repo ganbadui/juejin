@@ -1,0 +1,31 @@
+@import '../../../../styles/media.scss';
+.links {
+  //   padding: 1.3333rem;
+  margin-bottom: 1.3333rem;
+  background-color: var(--juejin-c-header);
+  border: 0.1667rem solid var(--juejin-c-bg-soft);
+  display: flex;
+  flex-direction: column;
+
+  .item {
+    padding: 12px;
+    display: flex;
+    flex-direction: row;
+    justify-content: normal;
+    align-items: center;
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+    .title {
+      font-size: 1.0833rem;
+      line-height: 1;
+      margin-left: 1rem;
+    }
+  }
+}
+@include media-mobile {
+  .links {
+    width: 90%;
+    margin: 0 auto;
+  }
+}

@@ -1,3 +1,4 @@
+@import '../styles/media.scss';
 .Home {
   position: relative;
   width: 100%;
@@ -5,7 +6,7 @@
   margin: 0 auto;
 
   &::after {
-    content: "";
+    content: '';
     display: block;
     clear: both;
   }
@@ -22,6 +23,7 @@
       box-shadow: 0 1px 2px 0 rgb(0 0 0 / 5%);
       transition: all 0.2s;
       transform: translateZ(0);
+      margin: 0 auto;
     }
     .nav::before {
       position: absolute;
@@ -34,7 +36,7 @@
     .nav,
     .nav::before {
       left: 0;
-      background-color: #fff;
+      background-color: var(--juejin-c-header);
     }
 
     .content {
@@ -42,16 +44,15 @@
       margin-top: 0.33rem;
     }
 
-    .aside {
+    .rightcontent {
       width: 20rem;
       height: 100%;
-      background-color: #fff;
       position: absolute;
       top: 0;
       right: 0;
     }
     @media (max-width: 960px) {
-      .aside {
+      .rightcontent {
         display: none;
       }
     }

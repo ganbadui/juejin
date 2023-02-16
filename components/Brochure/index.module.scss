@@ -1,0 +1,7 @@
+@import '../../styles/media.scss';
+@include media-mobile {
+  .brochure {
+    width: 90%;
+    margin: 0 auto;
+  }
+}

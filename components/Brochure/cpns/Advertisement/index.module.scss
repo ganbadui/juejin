@@ -1,0 +1,35 @@
+@import '../../../../styles/media.scss';
+.card {
+  padding: 1.3333rem;
+  margin-top: 1.3333rem;
+  margin-bottom: 1.3333rem;
+  background-color: var(--juejin-c-header);
+  border: 0.1667rem solid var(--juejin-c-bg-soft);
+  .content {
+    display: flex;
+    img {
+      width: 50px;
+      height: 50px;
+      margin-right: 10px;
+    }
+    .right {
+      .title {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 22px;
+      }
+
+      .desc {
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 24px;
+      }
+    }
+  }
+}
+@include media-mobile {
+  .card {
+    width: 90%;
+    margin: 0 auto;
+  }
+}

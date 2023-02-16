@@ -1,0 +1,41 @@
+@import '../../../../styles/media.scss';
+.arts {
+  margin-bottom: 1.3333rem;
+  position: relative;
+  .desc {
+    position: absolute;
+    right: 0.5833rem;
+    bottom: 0.5833rem;
+
+    height: 3rem;
+    line-height: 3rem;
+    font-size: 1.6667rem;
+    z-index: 1;
+    transform: scale(0.5);
+    transform-origin: right bottom;
+
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 0.0833rem solid #fff;
+    border-radius: 0.5rem;
+    padding: 0 1.3333rem;
+    font-weight: 300;
+
+    .inco {
+      display: none;
+      margin-right: 0.6667rem;
+    }
+
+    &:hover {
+      .inco {
+        display: inline-block;
+      }
+    }
+  }
+}
+@include media-mobile {
+  .arts {
+    width: 90%;
+    margin: 0 auto;
+  }
+}

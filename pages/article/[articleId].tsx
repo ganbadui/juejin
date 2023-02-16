@@ -1,38 +1,59 @@
-import { useStore } from '@/store'
-import { observer } from 'mobx-react-lite'
 import { Author } from '@/components'
+import { userInfo } from '@/components/Author'
 import MarkNav from 'markdown-navbar'
-import { useState, useEffect } from 'react'
-import { md } from './config'
+import { md } from '../../hooks/config'
 import ReactMarkdown from 'react-markdown'
 import 'github-markdown-css'
 import 'markdown-navbar/dist/navbar.css'
 import styles from './index.module.scss'
 import { GetServerSideProps, NextPage } from 'next'
-import RelatedArticles from '@/components/RelatedArticles'
+import RelatedArticles, {
+  RelatedArticlesType
+} from '@/components/RelatedArticles'
+import service from '@/service/fetch'
 
-interface IProps {
-  articleId: number
+interface articleTag {
+  id: number
+  tagName: string
 }
 
-const Article: NextPage<IProps> = ({ articleId }) => {
-  const store = useStore()
+interface Pagination {
+  page: number
+  pageSize: number
+  pageCount: number
+  total: number
+}
 
-  const demo = store.demo.demoInfo
+export interface Article {
+  id: number
+  title: string
+  description: string
+  content: string
+  acticleTag?: articleTag
+  userInfo?: userInfo
+  pagination?: Pagination
+}
+
+interface IProps {
+  article: Article
+  relatedArticles: RelatedArticlesType
+}
+
+const Article: NextPage<IProps> = ({ article, relatedArticles }) => {
   // const [md, changeMd] = useState()
   return (
     <div className={styles.article}>
       <div className={styles.content}>
-        <div className={styles.title}>Vite知识体系 | 青训营笔记</div>
+        <div className={styles.title}>{article.title}</div>
         <div>
           <ReactMarkdown className={`${styles.markdownContent} markdown-body`}>
-            {md}
+            {article.content}
           </ReactMarkdown>
         </div>
       </div>
       <div className={styles.sider}>
-        <Author />
-        <RelatedArticles />
+        <Author userInfo={article.userInfo} />
+        <RelatedArticles relatedArticles={relatedArticles} />
         <MarkNav
           className={styles.navbar}
           source={md}
@@ -45,13 +66,30 @@ const Article: NextPage<IProps> = ({ articleId }) => {
 }
 
 // 服务端获取数据
-export const getServerSideProps: GetServerSideProps = async context => {
-  const { articleId } = context.query
+export const getServerSideProps: GetServerSideProps = async ({
+  params
+}: any) => {
+  const articleId = params.articleId
+
+  const article: Article = await service.get(
+    `api/article?articleId=${articleId}`
+  )
+
+  const tagName = article.acticleTag?.tagName
+  const pagination = article.pagination
+
+  const relatedArticles = await service.get(
+    `api/relatedArticles?tagName=${tagName}&pageSize=${
+      pagination?.pageSize || 5
+    }`
+  )
+
   return {
     props: {
-      articleId
+      article,
+      relatedArticles
     }
   }
 }
 
-export default observer(Article)
+export default Article

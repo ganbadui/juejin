@@ -1,0 +1,42 @@
+@import '../../../../styles/media.scss';
+
+.authorlist {
+  margin-bottom: 1.3333rem;
+  background-color: var(--juejin-c-header);
+  border: 0.0833rem solid var(--juejin-c-bg-soft);
+
+  .bac {
+    background-color: var(--juejin-c-header);
+
+    :global {
+      .ant-card-head-title {
+        color: var(--juejin-c-text-1);
+      }
+    }
+  }
+
+  .item {
+    height: 31.6667rem;
+    // padding: 1rem 1.25rem;
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.01);
+    }
+  }
+
+  .more {
+    color: #007fff;
+    text-align: center;
+
+    .top {
+      padding: 1.25rem;
+      border-top: 0.0833rem solid #e6e4e4;
+    }
+  }
+}
+
+@include media-mobile {
+  .authorlist {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
