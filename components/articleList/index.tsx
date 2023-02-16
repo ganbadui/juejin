@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import styles from './index.module.scss'
 
 import { EyeOutlined, LikeOutlined, MessageOutlined } from '@ant-design/icons'
 import { List } from 'antd'
 import Link from 'next/link'
-import { getArticleList } from '@/service/articleData'
+import { getAList } from '@/service/articleData'
 import { IconText } from '@/components'
+import { GetServerSideProps, NextPage } from 'next'
 
-interface ListItem {
+export interface ListItem {
   id: number
   title: string
   description: string
@@ -19,22 +20,12 @@ interface ListItem {
   publishTime: string
 }
 
-const ArticleList: React.FC = () => {
-  const [data, setData] = useState<ListItem[]>([])
-
-  //设置假数据
-  useEffect(() => {
-    const page = 1
-    const pageSize = 10
-    getArticleList(page, pageSize).then(res => {
-      console.log(res.data.data)
-      const list = res.data.data
-      setData(list)
-    })
-  }, [])
-
+interface IProps {
+  listData: ListItem[]
+}
+const ArticleList: NextPage<IProps> = ({ listData }) => {
   const [active, setActive] = useState('推荐')
-  const listData = ['推荐', '最新', '最热']
+  const listTopData = ['推荐', '最新', '最热']
   const handleClick = (label: string) => {
     setActive(label)
     //todo: 请求数据
@@ -42,7 +33,7 @@ const ArticleList: React.FC = () => {
   return (
     <div className={styles.articleList}>
       <header className={`${styles.list_header}`}>
-        {listData.map(label => (
+        {listTopData.map(label => (
           <span
             key={label}
             onClick={() => handleClick(label)}
@@ -57,7 +48,7 @@ const ArticleList: React.FC = () => {
         <List
           itemLayout="vertical"
           size="large"
-          dataSource={data}
+          dataSource={listData}
           renderItem={(item: ListItem) => (
             <List.Item
               key={item.id}

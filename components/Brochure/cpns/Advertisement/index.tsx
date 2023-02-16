@@ -9,7 +9,7 @@ export interface IProps {
 const Advertisement: FC<IProps> = memo(props => {
   const { children } = props
   return (
-    <div className="advertisement">
+    <div className="downloadApp">
       <Link href="https://juejin.cn/app">
         <div className={styles.card}>
           <div className={styles.content}>
