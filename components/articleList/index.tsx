@@ -8,7 +8,7 @@ import { getAList } from '@/service/articleData'
 import { IconText } from '@/components'
 import { GetServerSideProps, NextPage } from 'next'
 
-interface ListItem {
+export interface ListItem {
   id: number
   title: string
   description: string
@@ -91,14 +91,4 @@ const ArticleList: NextPage<IProps> = ({ listData }) => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const page = 1
-  const pageSize = 10
-  const listData = await getAList(page, pageSize)
-  return {
-    props: {
-      listData
-    }
-  }
-}
 export default ArticleList

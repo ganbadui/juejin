@@ -2,9 +2,15 @@ import React from 'react'
 
 import styles from './index.module.scss'
 import { Brochure, NavBar } from '@/components'
-import ArticleList from './articleList'
+import ArticleList, { ListItem } from '@/components/articleList'
+import { getAList } from '@/service/articleData'
+import { GetServerSideProps } from 'next'
 
-export default function Home() {
+interface IProps {
+  listData: ListItem[]
+}
+
+export default function Home({ listData }: IProps) {
   return (
     <div className={styles.Home}>
       <div className={styles.container}>
@@ -12,7 +18,7 @@ export default function Home() {
           <NavBar />
         </nav>
         <div className={styles.content}>
-          <ArticleList listData={[]} />
+          <ArticleList listData={listData} />
           <div className={styles.rightcontent}>
             <Brochure />
           </div>
@@ -20,4 +26,16 @@ export default function Home() {
       </div>
     </div>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const page = 1
+  const pageSize = 10
+  const listData = await getAList(page, pageSize)
+
+  return {
+    props: {
+      listData: listData.data
+    }
+  }
 }
