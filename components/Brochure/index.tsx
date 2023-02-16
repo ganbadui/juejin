@@ -12,7 +12,7 @@ import Arts from './cpns/Arts'
 export interface IProps {
   children?: ReactElement
 }
-const Brochure: FC<IProps> = memo(props => {
+export const Brochure: FC<IProps> = memo(props => {
   // const [top, setTop] = useState(120)
   const { children } = props
   return (
@@ -31,5 +31,4 @@ const Brochure: FC<IProps> = memo(props => {
   )
 })
 
-export default Brochure
 Brochure.displayName = 'Brochure'
