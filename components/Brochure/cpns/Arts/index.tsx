@@ -17,6 +17,10 @@ const Arts: FC<IProps> = memo(props => {
             className={styles.bannerimage}
           />
         </a>
+        <div className={styles.desc}>
+          <span className={styles.inco}>投放 </span>
+          <span>广告</span>
+        </div>
       </div>
     </div>
   )

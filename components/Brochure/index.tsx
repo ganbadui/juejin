@@ -21,6 +21,7 @@ const Brochure: FC<IProps> = memo(props => {
 
       {/* <Affix offsetTop={top}> */}
       <Arts></Arts>
+      <Arts></Arts>
       <Advertisement></Advertisement>
       {/* </Affix> */}
 
