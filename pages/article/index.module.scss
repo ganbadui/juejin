@@ -16,8 +16,8 @@
         border: 1px solid var(--juejin-c-bg-soft);
 
         .title {
-            height: 5rem;
             font-size: 3rem;
+            line-height: 3rem;
             font-weight: 700;
         }
 
@@ -43,7 +43,7 @@
                 }
 
                 .active {
-                    background-color: var(--juejin-c-text-2);
+                    background-color: var(--juejin-c-text-4);
                 }
             }
         }
