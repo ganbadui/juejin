@@ -1,8 +1,9 @@
 import React from 'react'
-import ArticleList from './articleList'
+
 import styles from './index.module.scss'
-import { NavBar } from '@/components'
-import Brochure from '@/components/Brochure'
+import { Brochure, NavBar } from '@/components'
+import ArticleList from './articleList'
+
 export default function Home() {
   return (
     <div className={styles.Home}>
@@ -11,9 +12,9 @@ export default function Home() {
           <NavBar />
         </nav>
         <div className={styles.content}>
-          <ArticleList />
+          <ArticleList listData={[]} />
           <div className={styles.rightcontent}>
-            <Brochure></Brochure>
+            <Brochure />
           </div>
         </div>
       </div>
