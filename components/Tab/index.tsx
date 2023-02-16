@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import type { NextPage } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
