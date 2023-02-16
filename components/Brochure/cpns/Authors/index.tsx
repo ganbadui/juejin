@@ -70,7 +70,15 @@ const Authors: FC<IProps> = memo(props => {
                 />
               </div>
               <div className={styles.message}>
-                <div className={styles.username}>{item?.user_name}</div>
+                <div className={styles.name}>
+                  <div className={styles.username}>{item?.user_name}</div>
+                  <img
+                    src="https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/img/lv-5.d08789d.png"
+                    alt=""
+                    width={35}
+                    height={16}
+                  />
+                </div>
                 <div className={styles.introduce}>{item?.introduce}</div>
               </div>
             </div>

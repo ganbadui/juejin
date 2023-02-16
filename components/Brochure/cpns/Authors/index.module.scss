@@ -26,6 +26,16 @@
       //   align-items: center;
       //   justify-content: space-around;
       //   flex-direction: column;
+      .name {
+        display: flex;
+        align-items: center;
+        img {
+          width: 35px;
+          height: 16px;
+          border-style: none;
+          margin-left: 6px;
+        }
+      }
       .introduce {
         white-space: nowrap;
         overflow: hidden;
