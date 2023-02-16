@@ -7,7 +7,7 @@ export interface IProps {
 const Arts: FC<IProps> = memo(props => {
   const { children } = props
   return (
-    <div className="arts">
+    <div className={styles.arts}>
       <div className={styles.banner}>
         <a href="https://juejin.cn/book/7180604185786712075?utm_source=web_banner&amp;utm_medium=banner&amp;utm_campaign=xiaoce_nacos_20230208">
           <img
@@ -17,6 +17,10 @@ const Arts: FC<IProps> = memo(props => {
             className={styles.bannerimage}
           />
         </a>
+        <div className={styles.desc}>
+          <span className={styles.inco}>投放 </span>
+          <span>广告</span>
+        </div>
       </div>
     </div>
   )

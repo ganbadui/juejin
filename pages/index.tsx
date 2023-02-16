@@ -12,10 +12,9 @@ export default function Home() {
         </nav>
         <div className={styles.content}>
           <ArticleList />
-          <aside className={styles.aside} />
-        </div>
-        <div className={styles.rightcontent}>
-          <Brochure></Brochure>
+          <div className={styles.rightcontent}>
+            <Brochure></Brochure>
+          </div>
         </div>
       </div>
     </div>

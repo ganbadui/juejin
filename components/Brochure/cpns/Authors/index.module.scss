@@ -1,0 +1,56 @@
+@import '../../../../styles/media.scss';
+
+.container {
+  width: 100%;
+  height: 5rem;
+  color: var(--juejin-c-text-1);
+  background-color: var(--juejin-c-header);
+  padding: 0.6667rem;
+  //   border: 0.1667rem solid var(--juejin-c-bg-soft);
+  //   display: flex;
+  .content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem;
+    border: 0.0833rem solid var(--juejin-c-bg-soft);
+    .head {
+      background-color: #f4f8f9;
+      border-radius: 100%;
+      width: 4rem;
+      height: 4rem;
+      margin-right: 1.125rem;
+    }
+    .message {
+      //   display: flex;
+      //   align-items: center;
+      //   justify-content: space-around;
+      //   flex-direction: column;
+      .name {
+        display: flex;
+        align-items: center;
+        img {
+          width: 2.9167rem;
+          height: 1.3333rem;
+          border-style: none;
+          margin-left: 0.5rem;
+        }
+      }
+      .introduce {
+        white-space: nowrap;
+        overflow: hidden;
+        width: 12.5rem;
+        text-overflow: ellipsis;
+        font-size: 1rem;
+        color: var(--juejin-c-text-2);
+      }
+    }
+  }
+}
+
+@include media-mobile {
+  .container {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
