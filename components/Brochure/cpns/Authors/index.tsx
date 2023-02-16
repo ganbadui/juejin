@@ -36,33 +36,12 @@ const Authors: FC<IProps> = memo(props => {
         {/* <div className={styles.username}>hhh</div> */}
         {data?.map(
           (item: {
-            user_name: ReactNode
-            userName:
-              | string
-              | number
-              | boolean
-              | React.ReactElement<
-                  any,
-                  string | React.JSXElementConstructor<any>
-                >
-              | React.ReactFragment
-              | React.ReactPortal
-              | null
-              | undefined
-            introduce:
-              | string
-              | number
-              | boolean
-              | React.ReactElement<
-                  any,
-                  string | React.JSXElementConstructor<any>
-                >
-              | React.ReactFragment
-              | React.ReactPortal
-              | null
-              | undefined
+            id: number
+            user_name: string
+            userName: string
+            introduce: string
           }) => (
-            <div key="index" className={styles.content}>
+            <div key={item.id} className={styles.content}>
               <div className={styles.head}>
                 <Avatar
                   size={48}
