@@ -3,6 +3,7 @@ export const tagToUrlMap = {
   沸点: '/hotpoint',
   课程: '/course',
   直播: '/live',
+  竞赛: '/competition',
   活动: '/activity',
   商城: '/shop',
   APP: '/APP',

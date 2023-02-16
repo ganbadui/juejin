@@ -12,7 +12,7 @@ const getAllTags = async (
     return {
       id: tag.id,
       label: tag.tag_name,
-      value: '/',
+      value: tagToUrlMap[tag.tag_name],
       isActive: tag.isActive
     }
   })
