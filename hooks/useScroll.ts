@@ -1,22 +1,21 @@
 import { useEffect, useState } from 'react'
 
-const BOTTOM_OFFSET = 100
-
 const useScroll = () => {
   const [scrollPosition, setScrollPosition] = useState(0)
+
+  const [changeDistance, setChangeDistance] = useState(0)
+
   const [isBottom, setIsBottom] = useState(false)
-  const [changeDistanc, setChangeDistanc] = useState(0)
 
   const handleScroll = () => {
     const position = window.pageYOffset
 
-    setChangeDistanc(position - scrollPosition)
+    setChangeDistance(position - scrollPosition)
 
     setScrollPosition(position)
 
     const isBottom =
-      window.innerHeight + window.scrollY >=
-      document.body.offsetHeight - BOTTOM_OFFSET
+      window.innerHeight + window.scrollY >= document.body.offsetHeight - 100
     setIsBottom(isBottom)
   }
 
@@ -28,7 +27,7 @@ const useScroll = () => {
     }
   })
 
-  return { scrollPosition, isBottom, changeDistanc }
+  return { scrollPosition, isBottom, changeDistance }
 }
 
 export default useScroll
