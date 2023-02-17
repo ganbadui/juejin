@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-const useScroll = () => {
+const useScrollTool = () => {
   const [scrollPosition, setScrollPosition] = useState(0)
 
   const [changeDistance, setChangeDistance] = useState(0)
@@ -30,4 +30,4 @@ const useScroll = () => {
   return { scrollPosition, isBottom, changeDistance }
 }
 
-export default useScroll
+export default useScrollTool

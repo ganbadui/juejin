@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
-import useScroll from './useScroll'
+import useScrollTool from './useScrollTool'
 
 const useSlide = (sideDistance = 1, offset = 0) => {
-  const { scrollPosition, changeDistance } = useScroll()
+  const { scrollPosition, changeDistance } = useScrollTool()
   const [sideFixed, setSideFixed] = useState(false)
   const [isUp, setIsUp] = useState(true)
   const [isfixed, setIsFixed] = useState(false)
