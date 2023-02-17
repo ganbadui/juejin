@@ -25,11 +25,13 @@ function App({ Component, pageProps, initialValue }: IProps) {
 }
 
 App.getInitialProps = async ({ ctx }: { ctx: any }) => {
+
   const tags = (await service.get('/api/tags')) as Nav[]
 
   const context: IContextProps = {
     tags: tags
   }
+
 
   return {
     initialValue: context
