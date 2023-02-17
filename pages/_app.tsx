@@ -1,7 +1,7 @@
 import 'antd/dist/reset.css'
 import '../styles/global.scss'
 import Layout from '@/components/Layout'
-import { StoreProvider } from '@/store'
+import { IContextProps, Nav, StoreProvider, useStore } from '@/store'
 import { NextPage } from 'next'
 import ErrorBoundary from '@/components/ErrorBoundary'
 import service from '@/service/fetch'
@@ -25,12 +25,16 @@ function App({ Component, pageProps, initialValue }: IProps) {
 }
 
 App.getInitialProps = async ({ ctx }: { ctx: any }) => {
-  const tags = await service.get('/api/tags')
+
+  const tags = (await service.get('/api/tags')) as Nav[]
+
+  const context: IContextProps = {
+    tags: tags
+  }
+
 
   return {
-    initialValue: {
-      tags: tags
-    }
+    initialValue: context
   }
 }
 
