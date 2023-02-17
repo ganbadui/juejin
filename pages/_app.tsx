@@ -25,18 +25,7 @@ function App({ Component, pageProps, initialValue }: IProps) {
 }
 
 App.getInitialProps = async ({ ctx }: { ctx: any }) => {
-  // const tags = await service.get('api/tags')
-
-  const tags = [
-    { id: 2, label: '首页', value: '/', isActive: false },
-    { id: 3, label: '沸点', value: '/hotpoint', isActive: false },
-    { id: 4, label: '课程', value: '/course', isActive: false },
-    { id: 5, label: '直播', value: '/live', isActive: false },
-    { id: 8, label: '竞赛', value: '/competition', isActive: true },
-    { id: 9, label: '商城', value: '/shop', isActive: false },
-    { id: 10, label: 'APP', value: '/APP', isActive: true },
-    { id: 11, label: '插件', value: '/plugin', isActive: false }
-  ]
+  const tags = await service.get('api/tags')
 
   return {
     initialValue: {
