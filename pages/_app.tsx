@@ -25,7 +25,7 @@ function App({ Component, pageProps, initialValue }: IProps) {
 }
 
 App.getInitialProps = async ({ ctx }: { ctx: any }) => {
-  const tags = await service.get('api/tags')
+  const tags = await service.get('/api/tags')
 
   return {
     initialValue: {
