@@ -15,26 +15,32 @@ const getArticleList = async (
   try {
     const data = result.data
 
-    const articleList = data.map((item: any) => {
-      // 有些文章没有封面图，这里做一下判断
-      if (item.cover) {
-        item.cover = 'https://api.skyseek.top' + item.cover[0].url
-      } else {
-        item.cover = ''
+    const list = data.map((item: any) => {
+      const id = item.id
+      const title = item.title
+      const description = item.description
+      let cover = item.cover
+      const tag = item.acticle_tag.tagName
+      const author = item.user_info.user_name
+      const publishTime = item.createdAt
+
+      if (cover) {
+        cover = 'https://api.skyseek.top' + cover[0].url
       }
+
       return {
-        id: item.id,
-        title: item.title,
-        description: item.description,
-        avatar: item.cover,
-        tag: item.acticle_tag.tagName,
-        author: item.user_info.user_name,
-        publishTime: item.createdAt
+        id: id,
+        title: title,
+        description: description,
+        avatar: cover,
+        tag: tag,
+        author: author,
+        publishTime: publishTime
       }
     })
 
     res.status(200).json({
-      data: articleList
+      data: list
     })
     if (result.data.length === 0) {
       //直接返回加载的数据为空
