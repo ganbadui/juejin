@@ -31,7 +31,21 @@ export default function Home({ listData }: IProps) {
 export const getServerSideProps: GetServerSideProps = async () => {
   const page = 1
   const pageSize = 10
-  const listData = await getAList(page, pageSize)
+  // const listData = await getAList(page, pageSize)
+
+  const listData = {
+    data: [
+      {
+        id: 1,
+        title: 'title1',
+        description: 'description1',
+        avatar: 'https://avatars.githubusercontent.com/u/2?v=4',
+        tag: 'tag1',
+        author: 'author1',
+        publishTime: '2021-01-01'
+      }
+    ]
+  }
 
   return {
     props: {
