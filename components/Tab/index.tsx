@@ -8,9 +8,10 @@ import { SwitchButton } from './cpns/SwitchButton'
 import type { MenuProps } from 'antd'
 import { Dropdown } from 'antd'
 import { useStore } from '@/store'
+import { useScroll } from '@/hooks/useScroll'
 
 const Tab: NextPage = () => {
-  const { tags } = useStore()
+  const { tags } = useStore()!
 
   const { pathname } = useRouter()
   const [arrow, setArrow] = useState('low')
@@ -18,6 +19,16 @@ const Tab: NextPage = () => {
   const getActive = () => {
     return tags.find(item => item.value === pathname)?.label
   }
+
+  const TabRef = useRef<HTMLDivElement>(null)
+
+  useScroll(() => {
+    if (document.documentElement.scrollTop > 200) {
+      TabRef.current!.style.display = 'none'
+    } else {
+      TabRef.current!.style.display = 'flex'
+    }
+  })
 
   const tagsMobile: MenuProps['items'] = tags?.map(nav => {
     return {
@@ -38,7 +49,7 @@ const Tab: NextPage = () => {
 
   return (
     <div>
-      <div className={styles.navbar}>
+      <div className={styles.navbar} ref={TabRef}>
         <div className={styles.wrppper}>
           <section className={styles.logoArea}>
             <Image src="/logo.svg" width={107} height={22} alt="图片加载失败" />
