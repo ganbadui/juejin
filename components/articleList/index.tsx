@@ -4,9 +4,8 @@ import styles from './index.module.scss'
 import { EyeOutlined, LikeOutlined, MessageOutlined } from '@ant-design/icons'
 import { List } from 'antd'
 import Link from 'next/link'
-import { getAList } from '@/service/articleData'
 import { IconText } from '@/components'
-import { GetServerSideProps, NextPage } from 'next'
+import { NextPage } from 'next'
 
 export interface ListItem {
   id: number

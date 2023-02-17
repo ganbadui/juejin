@@ -39,7 +39,7 @@ const getArticleList = async (
     if (result.data.length === 0) {
       //直接返回加载的数据为空
       res.status(200).json({
-        msg: '加载的数据为空'
+        msg: '没有更多了'
       })
     }
   } catch (error) {
