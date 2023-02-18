@@ -1,5 +1,5 @@
 import { Author } from '@/components'
-import { userInfo } from '@/components/Author'
+import { AvatarData, UserInfo } from '@/components/Author'
 import MarkNav from 'markdown-navbar'
 import 'markdown-navbar/dist/navbar.css'
 import ReactMarkdown from 'react-markdown'
@@ -32,16 +32,22 @@ export interface Article {
   description: string
   content: string
   acticleTag?: articleTag
-  userInfo?: userInfo
+  userInfo: UserInfo
   pagination?: Pagination
+  avartarData: AvatarData
 }
 
 interface IProps {
   article: Article
   relatedArticles: RelatedArticlesType
+  avatarData: AvatarData
 }
 
-const Article: NextPage<IProps> = ({ article, relatedArticles }) => {
+const Article: NextPage<IProps> = ({
+  article,
+  relatedArticles,
+  avatarData
+}) => {
   const store = useStore().project
 
   useScroll(() => {
@@ -57,7 +63,7 @@ const Article: NextPage<IProps> = ({ article, relatedArticles }) => {
       <div className={styles.content}>
         <div className={styles.title}>{article.title}</div>
         <div className={styles.author}>
-          <Author userInfo={article.userInfo} />
+          <Author userInfo={article.userInfo} avatarData={avatarData} />
         </div>
         <div>
           <ReactMarkdown
@@ -68,7 +74,7 @@ const Article: NextPage<IProps> = ({ article, relatedArticles }) => {
         </div>
       </div>
       <div className={styles.sider}>
-        <Author userInfo={article.userInfo} />
+        <Author userInfo={article.userInfo} avatarData={avatarData} />
         <RelatedArticles relatedArticles={relatedArticles} />
         <div className={styles.navbar}>
           <div className={styles.navTitle}>目录</div>
@@ -102,10 +108,13 @@ export const getServerSideProps: GetServerSideProps = async ({
     }`
   )
 
+  const avatarData = await service.get(`/api/avatar?id=${article.userInfo.id}`)
+
   return {
     props: {
       article,
-      relatedArticles
+      relatedArticles,
+      avatarData
     }
   }
 }
