@@ -6,14 +6,17 @@
   color: var(--juejin-c-text-1);
   background-color: var(--juejin-c-header);
   padding: 0.6667rem;
-  //   border: 0.1667rem solid var(--juejin-c-bg-soft);
+  border: 0.0833rem solid var(--juejin-c-bg-soft);
   //   display: flex;
   .content {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0.5rem;
-    border: 0.0833rem solid var(--juejin-c-bg-soft);
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.01);
+    }
+    border-bottom: 0.0833rem solid var(--juejin-c-bg-soft);
     .head {
       background-color: #f4f8f9;
       border-radius: 100%;
@@ -29,6 +32,8 @@
       .name {
         display: flex;
         align-items: center;
+        font-size: 1.1667rem;
+        font-weight: 500;
         img {
           width: 2.9167rem;
           height: 1.3333rem;

@@ -1,4 +1,11 @@
 import generateFetch from './generateFetch'
-import { LOCALDOMAIN } from './constants'
+import { APIDOMAIN, LOCALDOMAIN } from './constants'
 
-export default generateFetch(LOCALDOMAIN)
+// next.js 获取当前环境
+const env = process.env.NODE_ENV === 'development' ? LOCALDOMAIN : APIDOMAIN
+
+console.log(process.env.NODE_ENV)
+
+console.log('LOCALDOMAIN', env)
+
+export default generateFetch(env)

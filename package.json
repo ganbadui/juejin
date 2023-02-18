@@ -15,6 +15,7 @@
     "@next/font": "13.1.1",
     "antd": "^5.1.4",
     "axios": "^1.2.2",
+    "classnames": "^2.3.2",
     "github-markdown-css": "^5.2.0",
     "markdown-navbar": "^1.4.3",
     "next": "13.1.1",

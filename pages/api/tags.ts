@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import bffService from '@/service/bffFetch'
+import { tagToUrlMap } from '@/components/Tab/helper'
 
 const getAllTags = async (
   req: NextApiRequest,
@@ -11,7 +12,7 @@ const getAllTags = async (
     return {
       id: tag.id,
       label: tag.tag_name,
-      value: '/',
+      value: tagToUrlMap[tag.tag_name],
       isActive: tag.isActive
     }
   })

@@ -1,11 +1,11 @@
 import { createContext, useContext } from 'react'
 
-interface Nav {
+export interface Nav {
   label: string
   value: string
   isActive?: boolean
 }
-interface IContextProps {
+export interface IContextProps {
   tags: Nav[]
 }
 
@@ -14,7 +14,7 @@ interface IProps {
   initialValue: any
 }
 
-const storeContext = createContext<IContextProps>({ tags: [] })
+const storeContext = createContext<IContextProps | null>(null)
 
 export const StoreProvider = ({
   children,

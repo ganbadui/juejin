@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useCallback, useEffect } from 'react'
 
 const THEME_KEY = 'theme'
 
@@ -14,20 +14,20 @@ export function useTheme() {
     }
   })
 
-  const setClassList = (isDark = false) => {
+  const setClassList = useCallback((isDark = false) => {
     if (isDark) {
       classList.add('dark')
     } else {
       classList.remove('dark')
     }
-  }
+  }, [])
 
-  const updateTheme = () => {
+  const updateTheme = useCallback(() => {
     const userPreference = localStorage.getItem(THEME_KEY)
     setClassList(userPreference === 'dark')
-  }
+  }, [setClassList])
 
-  function toggle() {
+  const toggle = useCallback(() => {
     if (classList.contains('dark')) {
       setClassList(false)
       localStorage.setItem(THEME_KEY, 'light')
@@ -35,7 +35,7 @@ export function useTheme() {
       setClassList(true)
       localStorage.setItem(THEME_KEY, 'dark')
     }
-  }
+  }, [setClassList])
 
   return [toggle]
 }
