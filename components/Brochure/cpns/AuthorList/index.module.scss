@@ -5,6 +5,12 @@
   background-color: var(--juejin-c-header);
   border: 0.0833rem solid var(--juejin-c-bg-soft);
 
+  :global {
+    .ant-card-head-title {
+      color: var(--juejin-c-author-list-title);
+    }
+  }
+
   .bac {
     background-color: var(--juejin-c-header);
   }

@@ -138,7 +138,7 @@ export const NavBar: React.FC = () => {
           )
         })}
       </ul>
-      <Link href={''} className={styles.navItem}>
+      <Link href={'/'} className={styles.navItemRight}>
         标签管理
       </Link>
     </div>
