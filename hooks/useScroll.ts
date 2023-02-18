@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { throttle } from '@/utils'
 
 export function useScroll(callback: () => void) {
