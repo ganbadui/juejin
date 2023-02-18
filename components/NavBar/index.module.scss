@@ -15,7 +15,8 @@
     line-height: 1;
   }
 
-  .navItem {
+  .navItem,
+  .navItemRight {
     list-style: none;
     text-decoration: none;
     transition: all 0.3s ease-in-out;
@@ -24,7 +25,7 @@
     align-items: center;
     flex-shrink: 0;
     font-size: 1.16rem;
-    color: #71777c;
+    color: var(--juejin-c-nav-bar);
     padding: 0 1rem;
 
     &:first-child {
@@ -42,5 +43,15 @@
 
   .ant-list-item {
     height: 140px;
+  }
+
+  @media (max-width: 960px) {
+    .navList {
+      width: auto;
+      overflow-x: auto;
+    }
+    .navItemRight {
+      display: none !important;
+    }
   }
 }
