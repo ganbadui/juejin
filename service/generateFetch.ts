@@ -1,3 +1,4 @@
+import { message } from 'antd'
 import axios from 'axios'
 
 export const generateFetch = (baseurl: string) => {
@@ -15,6 +16,7 @@ export const generateFetch = (baseurl: string) => {
       if (response?.status === 200) {
         return response?.data
       } else {
+        message.error('未知错误')
         return {
           code: -1,
           msg: '未知错误',

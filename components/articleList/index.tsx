@@ -6,6 +6,7 @@ import { List } from 'antd'
 import Link from 'next/link'
 import { IconText } from '@/components'
 import { NextPage } from 'next'
+import formatTime from '@/utils/formatTime'
 
 export interface ListItem {
   id: number
@@ -49,39 +50,47 @@ const ArticleList: NextPage<IProps> = ({ listData }) => {
           size="large"
           dataSource={listData}
           renderItem={(item: ListItem) => (
-            <List.Item
-              key={item.id}
-              actions={[
-                <IconText
-                  icon={EyeOutlined}
-                  text="156"
-                  key="list-vertical-star-o"
-                />,
-                <IconText
-                  icon={LikeOutlined}
-                  text="156"
-                  key="list-vertical-like-o"
-                />,
-                <IconText
-                  icon={MessageOutlined}
-                  text="2"
-                  key="list-vertical-message"
-                />
-              ]}
-              extra={
-                <img width={120} height={80} alt="logo" src={item.avatar} />
-              }
-              className={styles.list_item}
-            >
-              <div className="list_item_header">
-                <span>{item.author}</span>
-                <span>{item.publishTime}</span>
-                <span>{item.tag}</span>
+            <List.Item key={item.id} className={styles.list_item}>
+              <div className={styles.list_item_header}>
+                <Link href={'/'} className={styles.list_item_header_author}>
+                  {item.author}
+                </Link>
+                <div className={styles.list_item_header_date}>
+                  {formatTime(item.publishTime)}
+                </div>
+                <span className={styles.list_item_header_tag}>{item.tag}</span>
               </div>
-              <List.Item.Meta
-                title={<Link href={''}>{item.title}</Link>}
-                description={item.description}
-              />
+              <div className={styles.list_item_content}>
+                <div className={styles.list_item_content_left}>
+                  <List.Item.Meta
+                    title={<Link href={''}>{item.title}</Link>}
+                    description={item.description}
+                  />
+                  <div className={styles.list_item_content_left_icon}>
+                    <IconText
+                      icon={EyeOutlined}
+                      text="156"
+                      key="list-vertical-star-o"
+                    />
+
+                    <IconText
+                      icon={LikeOutlined}
+                      text="156"
+                      key="list-vertical-like-o"
+                    />
+
+                    <IconText
+                      icon={MessageOutlined}
+                      text="2"
+                      key="list-vertical-message"
+                    />
+                  </div>
+                </div>
+
+                {item.avatar && (
+                  <img className={styles.list_item_thumb} src={item.avatar} />
+                )}
+              </div>
             </List.Item>
           )}
         />

@@ -41,7 +41,7 @@ export default function Home({ listData }: IProps) {
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const page = 1
-  const pageSize = 10
+  const pageSize = 15
   const listData = await getAList(page, pageSize)
 
   return {

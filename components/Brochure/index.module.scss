@@ -1,4 +1,15 @@
 @import '../../styles/media.scss';
+.brochure {
+  .side-fixed {
+    position: fixed;
+    top: 67px;
+    transition: all 0.2s;
+
+    &.top {
+      top: 180px;
+    }
+  }
+}
 @include media-mobile {
   .brochure {
     width: 90%;
