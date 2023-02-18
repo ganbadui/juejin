@@ -10,6 +10,9 @@ import RelatedArticles, {
   RelatedArticlesType
 } from '@/components/RelatedArticles'
 import service from '@/service/fetch'
+import { observer } from 'mobx-react-lite'
+import { useScroll } from '@/hooks/useScroll'
+import { useStore } from '@/store'
 
 interface articleTag {
   id: number
@@ -39,6 +42,15 @@ interface IProps {
 }
 
 const Article: NextPage<IProps> = ({ article, relatedArticles }) => {
+  const store = useStore().project
+
+  useScroll(() => {
+    if (document.documentElement.scrollTop > 200) {
+      store.setNeedMove(true)
+    } else {
+      store.setNeedMove(false)
+    }
+  })
   // const [md, changeMd] = useState()
   return (
     <div className={styles.article}>
@@ -98,4 +110,4 @@ export const getServerSideProps: GetServerSideProps = async ({
   }
 }
 
-export default Article
+export default observer(Article)

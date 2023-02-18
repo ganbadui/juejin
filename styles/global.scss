@@ -206,3 +206,12 @@ fieldset {
   margin: 0;
   padding: 0;
 }
+
+.move {
+  transform: translate3d(0, -5rem, 0);
+}
+
+.fix {
+  position: fixed;
+  top: 5rem;
+}

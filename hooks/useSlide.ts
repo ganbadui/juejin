@@ -1,25 +1,19 @@
 import { useEffect, useState } from 'react'
+// import useScrollTool from './useScrollTool'
 import useScrollTool from './useScrollTool'
 
 const useSlide = (sideDistance = 1, offset = 0) => {
   const { scrollPosition, changeDistance } = useScrollTool()
   const [sideFixed, setSideFixed] = useState(false)
   const [isUp, setIsUp] = useState(true)
-  const [isfixed, setIsFixed] = useState(false)
 
   const sideOffset = sideDistance * 120 + offset
   useEffect(() => {
-    if (scrollPosition > 700 + sideOffset) {
+    if (scrollPosition > 800 + sideOffset) {
       setSideFixed(true)
     } else {
       setSideFixed(false)
     }
-  }, [scrollPosition, sideOffset, offset])
-
-  // 固定顶部
-  useEffect(() => {
-    if (scrollPosition > 60) setIsFixed(true)
-    else setIsFixed(false)
   }, [scrollPosition, sideOffset, offset])
 
   useEffect(() => {
@@ -32,8 +26,7 @@ const useSlide = (sideDistance = 1, offset = 0) => {
   return {
     sideFixed,
     setSideFixed,
-    isUp,
-    isfixed
+    isUp
   }
 }
 

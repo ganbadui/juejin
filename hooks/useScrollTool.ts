@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-
+import { debounce } from '@/utils'
 const useScrollTool = () => {
   const [scrollPosition, setScrollPosition] = useState(0)
 
@@ -7,7 +7,7 @@ const useScrollTool = () => {
 
   const [isBottom, setIsBottom] = useState(false)
 
-  const handleScroll = () => {
+  const handleScroll = debounce(() => {
     const position = window.pageYOffset
 
     setChangeDistance(position - scrollPosition)
@@ -17,7 +17,7 @@ const useScrollTool = () => {
     const isBottom =
       window.innerHeight + window.scrollY >= document.body.offsetHeight - 100
     setIsBottom(isBottom)
-  }
+  }, 100)
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll, { passive: true })
