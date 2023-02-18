@@ -6,26 +6,29 @@ import ArticleList, { ListItem } from '@/components/articleList'
 import { getAList } from '@/service/articleData'
 import { GetServerSideProps } from 'next'
 import { useScroll } from '@/hooks/useScroll'
+import { useStore } from '@/store'
+import { observer } from 'mobx-react-lite'
+import classNames from 'classnames'
 
 interface IProps {
   listData: ListItem[]
 }
 
-export default function Home({ listData }: IProps) {
-  const NavRef = useRef<HTMLDivElement>(null)
+function Home({ listData }: IProps) {
+  const store = useStore().project
 
   useScroll(() => {
     if (document.documentElement.scrollTop > 200) {
-      NavRef.current!.style.top = '0px'
+      store.setNeedMove(true)
     } else {
-      NavRef.current!.style.top = '5rem'
+      store.setNeedMove(false)
     }
   })
 
   return (
     <div className={styles.Home}>
       <div className={styles.container}>
-        <nav className={styles.nav} ref={NavRef}>
+        <nav className={classNames(styles.nav, { move: store.needMove })}>
           <NavBar />
         </nav>
         <div className={styles.content}>
@@ -50,3 +53,5 @@ export const getServerSideProps: GetServerSideProps = async () => {
     }
   }
 }
+
+export default observer(Home)

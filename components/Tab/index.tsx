@@ -9,9 +9,12 @@ import type { MenuProps } from 'antd'
 import { Dropdown } from 'antd'
 import { useStore } from '@/store'
 import { useScroll } from '@/hooks/useScroll'
+import { observer } from 'mobx-react-lite'
+import classNames from 'classnames'
 
 const Tab: NextPage = () => {
-  const { tags } = useStore()!
+  const store = useStore().project
+  const tags = store.tags
 
   const { pathname } = useRouter()
   const [arrow, setArrow] = useState('low')
@@ -19,16 +22,6 @@ const Tab: NextPage = () => {
   const getActive = () => {
     return tags.find(item => item.value === pathname)?.label
   }
-
-  const TabRef = useRef<HTMLDivElement>(null)
-
-  useScroll(() => {
-    if (document.documentElement.scrollTop > 200) {
-      TabRef.current!.style.display = 'none'
-    } else {
-      TabRef.current!.style.display = 'flex'
-    }
-  })
 
   const tagsMobile: MenuProps['items'] = tags?.map(nav => {
     return {
@@ -49,7 +42,7 @@ const Tab: NextPage = () => {
 
   return (
     <div>
-      <div className={styles.navbar} ref={TabRef}>
+      <div className={classNames(styles.navbar, { move: store.needMove })}>
         <div className={styles.wrppper}>
           <section className={styles.logoArea}>
             <Image src="/logo.svg" width={107} height={22} alt="图片加载失败" />
@@ -114,4 +107,4 @@ const Tab: NextPage = () => {
   )
 }
 
-export default Tab
+export default observer(Tab)
