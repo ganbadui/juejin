@@ -2,9 +2,9 @@
 
 .related {
   margin-top: 1.6667rem;
-  width: 29.1667rem;
   background-color: var(--juejin-c-header);
   border: 2px solid var(--juejin-c-bg-soft);
+
   .title {
     padding: 1.333rem 0;
     margin: 0 1.667rem;
@@ -14,24 +14,30 @@
     font-weight: 500;
     border-bottom: 1px solid #e4e6eb;
   }
+
   .entry {
     padding: 0.667rem 0 1.333rem;
+
     .list {
       // padding: 0.667rem 1.667rem;
       margin: 0.6667rem 0 1.1667rem;
+
       .content {
         line-height: 1.8333rem;
         font-size: 1.3333rem;
         font-weight: 400;
         // color: var(--juejin-c-text-4);
         padding: 0.3333rem 1.667rem;
+
         &:hover {
           color: var(--juejin-c-blue-darker);
         }
       }
+
       .meta {
         margin-top: 0.3333rem;
         padding: 0 1.667rem;
+
         .entrymeta {
           display: inline-block;
           font-size: 1.25rem;
@@ -43,6 +49,7 @@
     }
   }
 }
+
 @include media-mobile {
   .related {
     width: 90%;

@@ -1,9 +1,9 @@
 import { Author } from '@/components'
 import { userInfo } from '@/components/Author'
 import MarkNav from 'markdown-navbar'
-import ReactMarkdown from 'react-markdown'
-import 'github-markdown-css'
 import 'markdown-navbar/dist/navbar.css'
+import ReactMarkdown from 'react-markdown'
+import markdownCss from './juejin.module.scss'
 import styles from './index.module.scss'
 import { GetServerSideProps, NextPage } from 'next'
 import RelatedArticles, {
@@ -44,8 +44,13 @@ const Article: NextPage<IProps> = ({ article, relatedArticles }) => {
     <div className={styles.article}>
       <div className={styles.content}>
         <div className={styles.title}>{article.title}</div>
+        <div className={styles.author}>
+          <Author userInfo={article.userInfo} />
+        </div>
         <div>
-          <ReactMarkdown className={`${styles.markdownContent} markdown-body`}>
+          <ReactMarkdown
+            className={`${styles.markdownContent} ${markdownCss.markdownBody}`}
+          >
             {article.content}
           </ReactMarkdown>
         </div>
@@ -53,12 +58,14 @@ const Article: NextPage<IProps> = ({ article, relatedArticles }) => {
       <div className={styles.sider}>
         <Author userInfo={article.userInfo} />
         <RelatedArticles relatedArticles={relatedArticles} />
-        <MarkNav
-          className={styles.navbar}
-          source={article.content}
-          headingTopOffset={80}
-          ordered={false}
-        />
+        <div className={styles.navbar}>
+          <div className={styles.navTitle}>目录</div>
+          <MarkNav
+            source={article.content}
+            headingTopOffset={80}
+            ordered={false}
+          />
+        </div>
       </div>
     </div>
   )

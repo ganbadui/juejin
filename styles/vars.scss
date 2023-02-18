@@ -9,7 +9,7 @@
   --juejin-c-black-soft: #242424;
   --juejin-c-black-mute: #2f2f2f;
 
-  --juejin-c-gray: #8e8e8e;
+  --juejin-c-gray: #f7f8fa;
   --juejin-c-gray-light-1: #aeaeae;
   --juejin-c-gray-light-2: #c7c7c7;
   --juejin-c-gray-light-3: #d1d1d1;
@@ -61,6 +61,7 @@
   --juejin-c-blue-dark: #535bf2;
   --juejin-c-blue-darker: #454ce1;
   --juejin-c-blue-dimm: rgba(100, 108, 255, 0.08);
+  --juejin-toc-blue: #1e80ff;
 
   --juejin-c-yellow: #ffc517;
   --juejin-c-yellow-light: #fcd253;
@@ -105,6 +106,9 @@
   --juejin-c-brand-lighter: var(--juejin-c-green-lighter);
   --juejin-c-brand-dark: var(--juejin-c-green-dark);
   --juejin-c-brand-darker: var(--juejin-c-green-darker);
+
+  --juejin-md-code-bg: #fff5f5;
+  --juejin-md-code-font: #ff502c;
 }
 
 .dark {
@@ -131,4 +135,7 @@
   --juejin-c-text-inverse-4: var(--juejin-c-text-light-4);
 
   --juejin-c-text-code: var(--juejin-c-indigo-lighter);
+
+  --juejin-md-code-bg: #261f1f;
+  --juejin-md-code-font: hsl(8, 81%, 60%);
 }
