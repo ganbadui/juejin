@@ -3,9 +3,9 @@ import type { FC } from 'react'
 import styles from './index.module.scss'
 import { NextPage } from 'next'
 import { Avatar, Space } from 'antd'
-
 import axios from 'axios'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import service from '@/service/fetch'
 export interface IProps {
   children?: ReactElement
 }
@@ -21,15 +21,22 @@ interface Iprops {
 const Authors: FC<IProps> = memo(props => {
   const { children } = props
   const [data, setData] = useState<any>([])
+  const dataRef = useRef(data)
   useEffect(() => {
-    const fetchData = async () => {
-      const res = await axios('https://api.skyseek.top/api/user-names')
-      setData(res.data.data)
-      console.log(res.data.data)
-    }
-    fetchData()
+    setTimeout(() => {
+      const fetchData = async () => {
+        const res = await axios('https://api.skyseek.top/api/user-names')
+        setData(res.data.data)
+      }
+      fetchData()
+    }, 0)
   }, [])
-  console.log(data)
+  useEffect(() => {
+    setTimeout(() => {
+      dataRef.current = data
+    })
+  }, [])
+  // console.log(data)
   return (
     <div className={styles.container}>
       <div>
