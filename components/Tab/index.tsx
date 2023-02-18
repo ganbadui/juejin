@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import type { NextPage } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -8,7 +8,6 @@ import { SwitchButton } from './cpns/SwitchButton'
 import type { MenuProps } from 'antd'
 import { Dropdown } from 'antd'
 import { useStore } from '@/store'
-import { useScroll } from '@/hooks/useScroll'
 import { observer } from 'mobx-react-lite'
 import classNames from 'classnames'
 

@@ -16,7 +16,7 @@
         border: 1px solid var(--juejin-c-bg-soft);
 
         .author {
-            &>div {
+            & > div {
                 border: none;
                 margin-top: 2rem;
             }
@@ -42,6 +42,8 @@
             background-color: var(--juejin-c-header);
             margin-top: 2rem;
             padding: 1rem;
+            position: sticky;
+            top: 1rem;
 
             border: 1px solid var(--juejin-c-bg-soft);
 
@@ -61,11 +63,7 @@
 
                     &:hover {
                         background-color: var(--juejin-c-text-4);
-
-
                     }
-
-
                 }
 
                 .active {
@@ -73,7 +71,7 @@
                     color: var(--juejin-toc-blue);
 
                     &::before {
-                        content: '';
+                        content: "";
                         display: inline-block;
                         height: 50%;
                         width: 0.3rem;

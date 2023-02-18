@@ -1,4 +1,4 @@
-import React, { createContext, ReactElement, useContext } from 'react'
+import React, { createContext, useContext } from 'react'
 import { useLocalObservable, enableStaticRendering } from 'mobx-react-lite'
 import createStore, { IStore } from './modules/rootStore'
 
@@ -18,7 +18,6 @@ export const StoreProvider = ({ initialValue, children }: IProps) => {
 
 export const useStore = () => {
   const store: IStore = useContext(StoreContext) as IStore
-  console.log(store)
 
   if (!store) {
     throw new Error('数据不存在')
