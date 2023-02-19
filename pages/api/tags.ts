@@ -13,7 +13,8 @@ const getAllTags = async (
       id: tag.id,
       label: tag.tag_name,
       value: tagToUrlMap[tag.tag_name],
-      isActive: tag.isActive
+      isActive: tag.isActive,
+      activeContent: tag.activeContent ?? ''
     }
   })
 

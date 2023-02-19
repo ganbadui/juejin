@@ -2,6 +2,7 @@ export interface Nav {
   label: string
   value: string
   isActive?: boolean
+  activeContent?: string
 }
 
 export interface ProjectStore {

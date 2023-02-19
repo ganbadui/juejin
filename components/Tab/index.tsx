@@ -57,7 +57,7 @@ const Tab: NextPage = () => {
               >
                 {nav?.label}
                 {nav?.isActive ? (
-                  <span className={styles.tablead}>码上报名</span>
+                  <span className={styles.tablead}>{nav.activeContent}</span>
                 ) : null}
               </Link>
             ))}
