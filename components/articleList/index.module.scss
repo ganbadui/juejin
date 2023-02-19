@@ -3,7 +3,7 @@
   border-radius: 2px;
   width: 700px;
   height: auto;
-  background: #fff;
+  background: var(--juejin-c-list);
 
   .list_header {
     padding: 1.3rem 1rem;
@@ -35,14 +35,14 @@
   .list_item {
     cursor: pointer;
     position: relative;
-    background: #fff;
+    background: var(--juejin-c-list);
     padding: 12px 20px 0;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 
     &:hover {
-      background: #fafafa;
+      background: var(--juejin-c-list-item-hover);
     }
   }
   :global {
@@ -61,7 +61,7 @@
       max-width: 162px;
       font-size: 13px;
       line-height: 22px;
-      color: #4e5969;
+      color: var(--juejin-c-author);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -163,7 +163,7 @@
             font-weight: 700;
             font-size: 16px;
             line-height: 24px;
-            color: #1d2129;
+            color: var(--juejin-c-list-title);
             width: 100%;
             display: -webkit-box;
             overflow: hidden;
@@ -173,7 +173,7 @@
           }
 
           a:hover {
-            color: #1d2129;
+            color: var(--juejin-c-list-title-hover);
           }
         }
         .ant-list-item-meta-description {
@@ -186,9 +186,6 @@
           -webkit-box-orient: vertical;
           -webkit-line-clamp: 1;
         }
-
-        .ant-list-item-meta-avatar {
-        }
       }
     }
     .list_item_thumb {
@@ -199,5 +196,13 @@
       background-color: #fff;
       border-radius: 2px;
     }
+  }
+}
+
+@media (max-width: 960px) {
+  .articleList {
+    margin-right: 0;
+    width: 100%;
+    border-radius: 0;
   }
 }

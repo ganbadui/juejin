@@ -7,6 +7,7 @@ import Link from 'next/link'
 import { IconText } from '@/components'
 import { NextPage } from 'next'
 import formatTime from '@/utils/formatTime'
+import { useRouter } from 'next/router'
 
 export interface ListItem {
   id: number
@@ -30,6 +31,9 @@ const ArticleList: NextPage<IProps> = ({ listData }) => {
     setActive(label)
     //todo: 请求数据
   }
+
+  const router = useRouter()
+
   return (
     <div className={styles.articleList}>
       <header className={`${styles.list_header}`}>
@@ -50,7 +54,11 @@ const ArticleList: NextPage<IProps> = ({ listData }) => {
           size="large"
           dataSource={listData}
           renderItem={(item: ListItem) => (
-            <List.Item key={item.id} className={styles.list_item}>
+            <List.Item
+              key={item.id}
+              className={styles.list_item}
+              onClick={() => router.push(`/article/${item.id}`)}
+            >
               <div className={styles.list_item_header}>
                 <Link href={'/'} className={styles.list_item_header_author}>
                   {item.author}

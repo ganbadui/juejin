@@ -1,4 +1,4 @@
-@import '../../styles/media.scss';
+@import "../../styles/media.scss";
 
 .navbar {
   display: flex;
@@ -29,12 +29,12 @@
     .linkArea {
       a {
         font-size: 1.1667rem;
-        padding: 0 1.4167rem;
+        padding: 0 1rem;
         color: var(--juejin-c-text-1);
         position: relative;
         &:hover {
           &::after {
-            content: '';
+            content: "";
             display: block;
             position: absolute;
             width: 2.5rem;
@@ -70,24 +70,27 @@
 
   .mobile {
     display: none;
-    margin-left: 3.3333rem;
+    margin-left: 1.5rem;
     font-size: 1.3333rem;
-
-    img {
-      margin-right: 0.8333rem;
-    }
-
-    .arrow {
-      margin-left: 2px;
-      .low {
-        fill: #515767;
-        transform: rotate(0deg);
-        transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+    .flexContainer {
+      display: flex;
+      img {
+        margin-right: 1.5rem;
       }
 
-      .up {
-        fill: #1e80ff;
-        transform: rotate(-180deg);
+      .arrow {
+        margin-left: 2px;
+        .low {
+          fill: #515767;
+          transform: rotate(0deg);
+          transition: transform 0.1s ease-in-out;
+        }
+
+        .up {
+          fill: #1e80ff;
+          transform: rotate(-180deg);
+        }
       }
     }
   }
@@ -98,18 +101,28 @@
 }
 
 .overlay {
-  width: 9rem;
+  width: 13rem;
   text-align: center;
+  transition: all 0.1s ease;
+
   ul {
-    background-color: var(--juejin-c-bg) !important;
+    background-color: var(--juejin-c-header) !important;
+    left: -4.5833rem;
+    top: 0.7rem;
+
     li {
-      background-color: var(--juejin-c-bg) !important;
+      height: 4rem;
+      background-color: var(--juejin-c-header) !important;
       color: var(--juejin-c-text-1) !important;
       text-align: center !important;
 
+      .actived {
+        color: #1e80ff !important;
+      }
+
       &:hover {
         span > a::before {
-          content: '';
+          content: "";
           position: absolute;
           top: auto;
           right: 0;
@@ -134,6 +147,10 @@
     .mobile {
       display: block;
     }
+  }
+
+  .overlay {
+    width: 4rem;
   }
 }
 
