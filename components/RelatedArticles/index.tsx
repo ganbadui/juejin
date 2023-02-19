@@ -23,10 +23,15 @@ interface IProps {
 }
 
 const RelatedArticles: NextPage<IProps> = memo(({ relatedArticles }) => {
+  let articles = relatedArticles.articles
+  if (articles.length > 10) {
+    articles = articles.slice(0, 10)
+  }
+
   return (
     <div className={styles.related}>
       <div className={styles.title}>相关文章</div>
-      {relatedArticles.articles?.map(item => (
+      {articles?.map(item => (
         <Link key={item.id} href={`/article/${item.id}`}>
           <div className={styles.entry}>
             <div className={styles.list} key="index">

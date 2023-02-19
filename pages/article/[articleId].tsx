@@ -103,9 +103,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   const pagination = article.pagination
 
   const relatedArticles = await service.get(
-    `api/relatedArticles?tagName=${tagName}&pageSize=${
-      pagination?.pageSize || 5
-    }`
+    `api/relatedArticles?tagName=${tagName}&pageSize=${10}`
   )
 
   const avatarData = await service.get(`/api/avatar?id=${article.userInfo.id}`)
