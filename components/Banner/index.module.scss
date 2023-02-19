@@ -1,0 +1,41 @@
+@import "../../styles/media.scss";
+
+.extensionBanner {
+    margin-top: 3rem;
+    height: 8rem;
+    width: 100%;
+    padding: 1.5rem;
+    display: flex;
+    background-color: var(--juejin-c-header);
+    font-size: 1.2rem;
+
+    .icon {
+        width: 24px;
+        height: 24px;
+        display: block;
+    }
+
+    .wrapper {
+        flex: 1;
+        padding-left: 1rem;
+    }
+
+    .btn {
+        width: 7rem;
+        cursor: pointer;
+        margin-top: 1rem;
+        font-size: 1.2rem;
+        color: var(--juejin-toc-blue);
+        border-radius: 3px;
+        background: rgba(30, 128, 255, .05);
+        border: 1px solid rgba(30, 128, 255, .3);
+        height: 2.8rem;
+        text-align: center;
+        line-height: 2.8rem;
+        transition: all .2s;
+
+        &:hover {
+            background-color: #388eff;
+        }
+    }
+}

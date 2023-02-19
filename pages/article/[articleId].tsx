@@ -1,5 +1,7 @@
 import { Author } from '@/components'
 import { AvatarData, UserInfo } from '@/components/Author'
+import { Column } from '@/components/Column'
+import { Banner } from '@/components/Banner'
 import MarkNav from 'markdown-navbar'
 import 'markdown-navbar/dist/navbar.css'
 import ReactMarkdown from 'react-markdown'
@@ -72,6 +74,17 @@ const Article: NextPage<IProps> = ({
             {article.content}
           </ReactMarkdown>
         </div>
+        <div className={styles.tagListBox}>
+          <div className={styles.tagList}>
+            分类： <span>{article.acticleTag?.tagName}</span>
+          </div>
+          <div className={styles.tagList}>
+            标签：
+            <span className={styles.tag}>{article.acticleTag?.tagName}</span>
+          </div>
+        </div>
+        <Column></Column>
+        <Banner></Banner>
       </div>
       <div className={styles.sider}>
         <Author userInfo={article.userInfo} avatarData={avatarData} />
