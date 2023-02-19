@@ -29,6 +29,7 @@ const Tab: NextPage = () => {
         <Link
           key={nav?.label}
           href={nav?.value}
+          className={pathname === nav?.value ? styles.actived : ''}
           onClick={() => {
             arrow === 'low' ? setArrow('up') : setArrow('low')
           }}

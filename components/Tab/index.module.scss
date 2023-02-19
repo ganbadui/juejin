@@ -1,4 +1,4 @@
-@import '../../styles/media.scss';
+@import "../../styles/media.scss";
 
 .navbar {
   display: flex;
@@ -29,12 +29,12 @@
     .linkArea {
       a {
         font-size: 1.1667rem;
-        padding: 0 1.4167rem;
+        padding: 0 1rem;
         color: var(--juejin-c-text-1);
         position: relative;
         &:hover {
           &::after {
-            content: '';
+            content: "";
             display: block;
             position: absolute;
             width: 2.5rem;
@@ -72,6 +72,7 @@
     display: none;
     margin-left: 3.3333rem;
     font-size: 1.3333rem;
+    cursor: pointer;
 
     img {
       margin-right: 0.8333rem;
@@ -98,18 +99,29 @@
 }
 
 .overlay {
-  width: 9rem;
+  width: 11.9rem;
   text-align: center;
+  transition: all 0.1s ease;
+
   ul {
-    background-color: var(--juejin-c-bg) !important;
+    background-color: var(--juejin-c-header) !important;
+    width: 11.9rem;
+    left: -4.5833rem;
+    top: 4rem;
+
     li {
-      background-color: var(--juejin-c-bg) !important;
+      height: 4rem;
+      background-color: var(--juejin-c-header) !important;
       color: var(--juejin-c-text-1) !important;
       text-align: center !important;
 
+      .actived {
+        color: #1e80ff !important;
+      }
+
       &:hover {
         span > a::before {
-          content: '';
+          content: "";
           position: absolute;
           top: auto;
           right: 0;
