@@ -14,3 +14,21 @@ export const getAList = (page: number, pageSize: number) => {
     }
   })
 }
+
+export const getArticleTag = () => {
+  return service.get('/api/articleTag')
+}
+
+// 获取头像列表
+export const getAuthorList = () => {
+  return service.get('/api/authorList')
+}
+
+//点击标签切换文章
+export const getTagArticle = (tagID: number) => {
+  return service.get('/api/tagArticle', {
+    params: {
+      tagID
+    }
+  })
+}
