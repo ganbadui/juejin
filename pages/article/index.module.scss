@@ -16,7 +16,7 @@
         border: 1px solid var(--juejin-c-bg-soft);
 
         .author {
-            & > div {
+            &>div {
                 border: none;
                 margin-top: 2rem;
             }
@@ -32,6 +32,36 @@
         .markdownContent {
             background-color: var(--juejin-c-header);
             color: var(--juejin-c-text-1);
+        }
+
+        .tagListBox {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            height: 2rem;
+            font-size: 1.2rem;
+
+            .tagList {
+
+                margin-right: 4rem;
+                flex-shrink: 0;
+
+
+                span {
+                    background-color: var(--juejin-c-gray);
+                    padding: 0.5rem 1rem;
+                    cursor: pointer;
+                    border-radius: 3px;
+                    color: #515767;
+                }
+
+                .tag {
+                    background-color: #eaf2ff;
+                    color: var(--juejin-toc-blue);
+
+                }
+
+            }
         }
     }
 
@@ -57,7 +87,6 @@
             :global {
                 .title-anchor {
                     font-size: 1.2rem;
-                    height: 2.5rem;
                     line-height: 2.5rem;
                     color: var(--juejin-c-text-1);
 
@@ -73,9 +102,9 @@
                     &::before {
                         content: "";
                         display: inline-block;
-                        height: 50%;
+                        height: 15px;
                         width: 0.3rem;
-                        transform: translate(-15px, 3px);
+                        transform: translate(-15px, 4px);
                         background-color: var(--juejin-toc-blue);
                         border-radius: 0 3px 3px 0;
                     }
