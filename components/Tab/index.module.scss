@@ -70,25 +70,27 @@
 
   .mobile {
     display: none;
-    margin-left: 3.3333rem;
+    margin-left: 1.5rem;
     font-size: 1.3333rem;
     cursor: pointer;
-
-    img {
-      margin-right: 0.8333rem;
-    }
-
-    .arrow {
-      margin-left: 2px;
-      .low {
-        fill: #515767;
-        transform: rotate(0deg);
-        transition: transform 0.2s ease-in-out;
+    .flexContainer {
+      display: flex;
+      img {
+        margin-right: 1.5rem;
       }
 
-      .up {
-        fill: #1e80ff;
-        transform: rotate(-180deg);
+      .arrow {
+        margin-left: 2px;
+        .low {
+          fill: #515767;
+          transform: rotate(0deg);
+          transition: transform 0.1s ease-in-out;
+        }
+
+        .up {
+          fill: #1e80ff;
+          transform: rotate(-180deg);
+        }
       }
     }
   }
@@ -99,15 +101,14 @@
 }
 
 .overlay {
-  width: 11.9rem;
+  width: 13rem;
   text-align: center;
   transition: all 0.1s ease;
 
   ul {
     background-color: var(--juejin-c-header) !important;
-    width: 11.9rem;
     left: -4.5833rem;
-    top: 4rem;
+    top: 0.7rem;
 
     li {
       height: 4rem;
@@ -146,6 +147,10 @@
     .mobile {
       display: block;
     }
+  }
+
+  .overlay {
+    width: 4rem;
   }
 }
 
