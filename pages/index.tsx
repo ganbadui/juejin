@@ -3,19 +3,21 @@ import React, { useRef } from 'react'
 import styles from './index.module.scss'
 import { Brochure, NavBar } from '@/components'
 import ArticleList, { ListItem } from '@/components/articleList'
-import { getAList, getArticleTag } from '@/service/articleData'
+import { getAList, getArticleTag, getAuthorList } from '@/service/articleData'
 import { GetServerSideProps } from 'next'
 import { useScroll } from '@/hooks/useScroll'
 import { useStore } from '@/store'
 import { observer } from 'mobx-react-lite'
 import classNames from 'classnames'
+import { IAuthor } from '@/components/Brochure/types/author'
 
 interface IProps {
   listData: ListItem[]
   tagsData: any[]
+  authorList: IAuthor[]
 }
 
-function Home({ listData, tagsData }: IProps) {
+function Home({ listData, tagsData, authorList }: IProps) {
   const store = useStore().project
 
   useScroll(() => {
@@ -35,7 +37,7 @@ function Home({ listData, tagsData }: IProps) {
         <div className={styles.content}>
           <ArticleList listData={listData} />
           <div className={styles.rightcontent}>
-            <Brochure />
+            <Brochure authorList={authorList} />
           </div>
         </div>
       </div>
@@ -50,10 +52,13 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
   const tagsData = await getArticleTag()
 
+  const authorList = await getAuthorList()
+  console.log(authorList)
   return {
     props: {
       listData: listData.data,
-      tagsData: tagsData.data
+      tagsData: tagsData.data,
+      authorList: authorList.data
     }
   }
 }

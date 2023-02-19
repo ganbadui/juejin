@@ -23,12 +23,11 @@
       width: 4rem;
       height: 4rem;
       margin-right: 1.125rem;
+      img {
+        border-radius: 2rem;
+      }
     }
     .message {
-      //   display: flex;
-      //   align-items: center;
-      //   justify-content: space-around;
-      //   flex-direction: column;
       .name {
         display: flex;
         align-items: center;
