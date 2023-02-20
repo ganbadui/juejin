@@ -3,7 +3,6 @@ import bffService from '@/service/bffFetch'
 
 const getTagedArticle = async (req: NextApiRequest, res: NextApiResponse) => {
   const { tagID } = req.query
-  console.log(tagID)
 
   const result: any = await bffService.get(
     `api/acticle-tags/${tagID}?populate=deep`

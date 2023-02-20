@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useReducer, useRef, createContext } from 'react'
 
 import styles from './index.module.scss'
 import { Brochure, NavBar } from '@/components'
@@ -9,6 +9,8 @@ import { useScroll } from '@/hooks/useScroll'
 import { useStore } from '@/store'
 import { observer } from 'mobx-react-lite'
 import classNames from 'classnames'
+
+export const HomeContext = createContext<any>({})
 
 interface IProps {
   listData: ListItem[]
@@ -26,18 +28,39 @@ function Home({ listData, tagsData }: IProps) {
     }
   })
 
+  const initialState: IProps = {
+    listData,
+    tagsData
+  }
+
+  function reducer(state: IProps, action: any) {
+    switch (action.type) {
+      case 'UPDATE_TAG':
+        return {
+          ...state,
+          listData: action.data
+        }
+      default:
+        return initialState
+    }
+  }
+
+  const [state, dispatch] = useReducer(reducer, initialState)
+
   return (
     <div className={styles.Home}>
       <div className={styles.container}>
-        <nav className={classNames(styles.nav, { move: store.needMove })}>
-          <NavBar tagsData={tagsData} />
-        </nav>
-        <div className={styles.content}>
-          <ArticleList listData={listData} />
-          <div className={styles.rightcontent}>
-            <Brochure />
+        <HomeContext.Provider value={{ state, dispatch }}>
+          <nav className={classNames(styles.nav, { move: store.needMove })}>
+            <NavBar tagsData={state.tagsData} />
+          </nav>
+          <div className={styles.content}>
+            <ArticleList listData={state.listData} />
+            <div className={styles.rightcontent}>
+              <Brochure />
+            </div>
           </div>
-        </div>
+        </HomeContext.Provider>
       </div>
     </div>
   )
