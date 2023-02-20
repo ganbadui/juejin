@@ -25,6 +25,7 @@ specifiers:
   husky: ^8.0.3
   lint-staged: ^13.1.0
   markdown-navbar: ^1.4.3
+  mobx: 6.1.0
   mobx-react-lite: ^3.4.0
   next: 13.1.1
   prettier: ^2.8.3
@@ -43,7 +44,8 @@ dependencies:
   classnames: 2.3.2
   github-markdown-css: 5.2.0
   markdown-navbar: 1.4.3
-  mobx-react-lite: 3.4.0_biqbaboplfbrettd7655fr4n2y
+  mobx: 6.1.0
+  mobx-react-lite: 3.4.0_ugi27ybyvsnb7nnxsswg5nzoty
   next: 13.1.1_3duxcpitbtplz62feflag7fwby
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -2985,7 +2987,7 @@ packages:
       minimist: 1.2.7
     dev: true
 
-  /mobx-react-lite/3.4.0_biqbaboplfbrettd7655fr4n2y:
+  /mobx-react-lite/3.4.0_ugi27ybyvsnb7nnxsswg5nzoty:
     resolution: {integrity: sha512-bRuZp3C0itgLKHu/VNxi66DN/XVkQG7xtoBVWxpvC5FhAqbOCP21+nPhULjnzEqd7xBMybp6KwytdUpZKEgpIQ==}
     peerDependencies:
       mobx: ^6.1.0
@@ -2998,8 +3000,13 @@ packages:
       react-native:
         optional: true
     dependencies:
+      mobx: 6.1.0
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
+    dev: false
+
+  /mobx/6.1.0:
+    resolution: {integrity: sha512-AU3z1oIep0wu7BdFFjd/0e0K1SGVcXi0TX8GPKKCkdnQEjJ3w/PgOct63Yk7V0/di/bnxb8+UehWC/Lld+MmeA==}
     dev: false
 
   /mri/1.2.0:
