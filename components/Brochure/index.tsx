@@ -8,22 +8,21 @@ import styles from './index.module.scss'
 import Arts from './cpns/Arts'
 import useSlide from '@/hooks/useSlide'
 import classNames from 'classnames'
-// import { Affix } from 'antd'
-// import { useState } from 'react'
+import { IAuthor } from '@/components/Brochure/types/author'
 
 export interface IProps {
   children?: ReactElement
+  authorList: IAuthor[]
 }
 export const Brochure: FC<IProps> = memo(props => {
-  // const [top, setTop] = useState(120)
+  const { authorList } = props
+
   const { sideFixed, isUp } = useSlide(2)
   const { children } = props
   return (
     <div className={styles.brochure}>
       {!sideFixed && <Footer></Footer>}
-      {/* <Footer></Footer> */}
 
-      {/* <Affix offsetTop={top}> */}
       <div
         className={classNames({
           [styles['side-fixed']]: sideFixed,
@@ -39,7 +38,7 @@ export const Brochure: FC<IProps> = memo(props => {
 
       {!sideFixed && (
         <>
-          <AuthorList></AuthorList>
+          <AuthorList authorList={authorList}></AuthorList>
           <GuideBook></GuideBook>
         </>
       )}

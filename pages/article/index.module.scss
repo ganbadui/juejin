@@ -9,11 +9,12 @@
     display: flex;
 
     .content {
-        flex: 1;
+        width: 70rem;
         margin-right: 1rem;
         padding: 2rem;
         background-color: var(--juejin-c-header);
         border: 1px solid var(--juejin-c-bg-soft);
+        margin-bottom: 1.8rem;
 
         .author {
             &>div {
@@ -74,7 +75,6 @@
             padding: 1rem;
             position: sticky;
             top: 1rem;
-
             border: 1px solid var(--juejin-c-bg-soft);
 
             .navTitle {
@@ -85,28 +85,43 @@
             }
 
             :global {
-                .title-anchor {
-                    font-size: 1.2rem;
-                    line-height: 2.5rem;
-                    color: var(--juejin-c-text-1);
+                .markdown-navigation {
 
-                    &:hover {
-                        background-color: var(--juejin-c-text-4);
+                    max-height: 87vh;
+                    overflow: auto;
+
+                    &::-webkit-scrollbar {
+                        width: 6px;
                     }
-                }
 
-                .active {
-                    background-color: var(--juejin-c-gray);
-                    color: var(--juejin-toc-blue);
+                    &::-webkit-scrollbar-thumb {
+                        background-color: #e4e6eb;
+                        border-radius: 3px;
+                    }
 
-                    &::before {
-                        content: "";
-                        display: inline-block;
-                        height: 15px;
-                        width: 0.3rem;
-                        transform: translate(-15px, 4px);
-                        background-color: var(--juejin-toc-blue);
-                        border-radius: 0 3px 3px 0;
+                    .title-anchor {
+                        font-size: 1.2rem;
+                        line-height: 2.5rem;
+                        color: var(--juejin-c-text-1);
+
+                        &:hover {
+                            background-color: var(--juejin-c-text-4);
+                        }
+                    }
+
+                    .active {
+                        background-color: var(--juejin-c-gray);
+                        color: var(--juejin-toc-blue);
+
+                        &::before {
+                            content: "";
+                            display: inline-block;
+                            height: 15px;
+                            width: 0.3rem;
+                            transform: translate(-15px, 4px);
+                            background-color: var(--juejin-toc-blue);
+                            border-radius: 0 3px 3px 0;
+                        }
                     }
                 }
             }
