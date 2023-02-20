@@ -25,7 +25,7 @@ const getArticleList = async (
       const publishTime = item.createdAt
 
       if (cover) {
-        cover = 'https://api.skyseek.top' + cover[0].url
+        cover = 'https://api.skyseek.top' + cover[0].formats.small.url
       }
 
       return {
