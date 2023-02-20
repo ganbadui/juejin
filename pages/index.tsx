@@ -79,7 +79,6 @@ export const getServerSideProps: GetServerSideProps = async () => {
   const tagsData = await getArticleTag()
 
   const authorList = await getAuthorList()
-
   return {
     props: {
       listData: listData.data,

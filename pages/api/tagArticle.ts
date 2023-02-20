@@ -19,7 +19,7 @@ const getTagedArticle = async (req: NextApiRequest, res: NextApiResponse) => {
       const description = item.description
       let cover = item.cover
       if (cover) {
-        cover = 'https://api.skyseek.top' + cover[0].url
+        cover = 'https://api.skyseek.top' + cover[0].formats.small.url
       }
       const tag = item.acticle_tag.tagName
       const author = item.user_info.user_name
