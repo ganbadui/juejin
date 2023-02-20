@@ -135,7 +135,7 @@ export const NavBar: NextPage<IProps> = ({ tagsData }) => {
   //   }
   // ]
 
-  const [tagId, setTagId] = useState(0)
+  const [tagId, setTagId] = useState(2)
 
   const { state, dispatch } = useContext(HomeContext)
 
@@ -145,11 +145,19 @@ export const NavBar: NextPage<IProps> = ({ tagsData }) => {
 
   useEffect(() => {
     let filterArticles = []
-    if (tagId !== 0) {
+    if (tagId !== 2) {
       service.get(`/api/tagArticle?tagID=${tagId}`).then(res => {
         filterArticles = res.data as any
         dispatch({ type: 'UPDATE_TAG', data: filterArticles })
       })
+    } else if (tagId === 2) {
+      filterArticles = (
+        localStorage.getItem('bigData')
+          ? JSON.parse(localStorage.getItem('bigData') as any)
+          : localStorage.setItem('bigData', JSON.stringify(state.listData))
+      ) as any
+
+      dispatch({ type: 'UPDATE_TAG', data: filterArticles })
     }
   }, [tagId])
 
