@@ -5,11 +5,14 @@ import Link from 'next/link'
 import Authors from '../Authors'
 import styles from './index.module.scss'
 import { RightOutlined } from '@ant-design/icons'
+import { IAuthor } from '@/components/Brochure/types/author'
 export interface IProps {
   children?: ReactElement
+  authorList: IAuthor[]
 }
 const AuthorList: FC<IProps> = memo(props => {
   const { children } = props
+  const { authorList } = props
   return (
     <div className={styles.authorlist}>
       <Card
@@ -19,15 +22,8 @@ const AuthorList: FC<IProps> = memo(props => {
         className={styles.bac}
       >
         <div className={styles.item}>
-          <Authors></Authors>
+          <Authors authorList={authorList}></Authors>
         </div>
-        {/* <div className={styles.item}>
-          <Authors></Authors>
-        </div>
-        <div className={styles.item}>
-          <Authors></Authors>
-        </div> */}
-
         <Link href="#" className={styles.more}>
           <div className={styles.top}>
             <span>完整榜单</span>

@@ -23,7 +23,7 @@ interface IProps {
 }
 
 const RelatedArticles: NextPage<IProps> = memo(({ relatedArticles }) => {
-  let articles = relatedArticles.articles
+  let articles = relatedArticles.articles.slice(0, 10)
   if (articles.length > 10) {
     articles = articles.slice(0, 10)
   }

@@ -6,29 +6,28 @@
   color: var(--juejin-c-text-1);
   background-color: var(--juejin-c-header);
   padding: 0.6667rem;
-  border: 0.0833rem solid var(--juejin-c-bg-soft);
+  border-top: 0.1667rem solid var(--juejin-c-bg-soft);
   //   display: flex;
   .content {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    // border-bottom: 2px solid var(--juejin-c-bg-soft);
     padding: 0.5rem;
     &:hover {
       background-color: rgba(0, 0, 0, 0.01);
     }
     border-bottom: 0.0833rem solid var(--juejin-c-bg-soft);
     .head {
-      background-color: #f4f8f9;
       border-radius: 100%;
       width: 4rem;
       height: 4rem;
       margin-right: 1.125rem;
+      img {
+        border-radius: 2rem;
+      }
     }
     .message {
-      //   display: flex;
-      //   align-items: center;
-      //   justify-content: space-around;
-      //   flex-direction: column;
       .name {
         display: flex;
         align-items: center;

@@ -16,7 +16,7 @@
   }
 
   .entry {
-    padding: 0.667rem 0 1.333rem;
+    // padding: 0.667rem 0 1.333rem;
 
     .list {
       // padding: 0.667rem 1.667rem;
@@ -25,7 +25,8 @@
       .content {
         line-height: 1.8333rem;
         font-size: 1.3333rem;
-        font-weight: 400;
+        font-weight: 500;
+        font-size: 1.1667rem;
         // color: var(--juejin-c-text-4);
         padding: 0.3333rem 1.667rem;
 
@@ -40,7 +41,7 @@
 
         .entrymeta {
           display: inline-block;
-          font-size: 1.25rem;
+          font-size: 1.1667rem;
           line-height: 1.8333rem;
           color: #8a919f;
           font-weight: 400;
