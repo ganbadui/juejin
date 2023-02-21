@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import styles from './index.module.scss'
 
 import { EyeOutlined, LikeOutlined, MessageOutlined } from '@ant-design/icons'
@@ -35,37 +35,59 @@ const ArticleList: NextPage<IProps> = ({ listData }) => {
   }
 
   const router = useRouter()
-  const [loading, setLoading] = useState(false)
 
-  const data = [...listData]
-  //使得data动态更新
+  const [tagID, setTagId] = useState(2)
+  const pageSize = 10
+  const [list, setList] = useState(listData)
+  const pageRef = useRef(1)
+  const [loading, setLoading] = useState(true)
+  const [hasMore, setHasMore] = useState(true)
 
-  const [list, setList] = useState(data)
-  const [page, setPage] = useState(2)
-  const loadMoreData = async () => {
-    if (loading) {
-      return
+  const getList = async (isLoadMore?: boolean) => {
+    setLoading(true)
+    const res = await getAList({
+      page: isLoadMore ? pageRef.current + 1 : 1,
+      pageSize,
+      tagId: tagID
+    })
+    setLoading(false)
+    if (isLoadMore) {
+      setList([...list, ...res.data.lsit])
+      setPageRef(pageRef.current + 1)
+    } else {
+      setList(res.data.list)
+      setPageRef(1)
     }
-    setLoading(true)
-
-    const pageSize = 10
-    // 调用文章列表接口
-    const newData: any = await (await getAList(page, pageSize)).data
-
-    // 更新数据
-    setList(list.concat(newData))
-
-    setLoading(true)
-    console.log(list)
-
-    // 更新页码
-    setPage(page + 1)
-
-    console.log(page)
   }
+
   useEffect(() => {
-    loadMoreData()
+    getList()
   }, [])
+  // 用于更新 pageRef
+  const setPageRef = useCallback(
+    (newPage: number) => {
+      pageRef.current = newPage
+    },
+    [pageRef]
+  )
+  const loadMoreData = async () => {
+    if (!loading && hasMore) {
+      setLoading(true)
+      const res = await getAList({
+        page: pageRef.current + 1,
+        pageSize,
+        tagId: tagID
+      })
+      setLoading(false)
+      setList(prevList => [...prevList, ...res.data.list])
+      setPageRef(pageRef.current + 1)
+      setHasMore(res.data.list.length > 0 && res.data.list.length === pageSize)
+    }
+  }
+
+  console.log('loading', loading)
+  console.log('hasMore', hasMore)
+  console.log('pageRef', pageRef.current)
 
   return (
     <div id="scrollableDiv" className={styles.articleList}>
@@ -85,7 +107,7 @@ const ArticleList: NextPage<IProps> = ({ listData }) => {
         <InfiniteScroll
           dataLength={list.length}
           next={loadMoreData}
-          hasMore={list.length < 15}
+          hasMore={hasMore}
           loader={<Skeleton paragraph={{ rows: 1 }} active />}
           endMessage={<Divider plain>没有更多了 🤐</Divider>}
           scrollableTarget="scrollableDiv"
