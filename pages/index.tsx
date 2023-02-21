@@ -41,7 +41,7 @@ function Home({ listData, tagsData, authorList }: IProps) {
       case 'UPDATE_TAG':
         return {
           ...state,
-          listData: action.data
+          listData: action.data.list
         }
       default:
         return initialState
@@ -74,14 +74,17 @@ function Home({ listData, tagsData, authorList }: IProps) {
 export const getServerSideProps: GetServerSideProps = async () => {
   const page = 1
   const pageSize = 15
-  const listData = await getAList(page, pageSize)
+  const tagID = 2
+
+  //传入tagID
+  const listData = await getAList({ page, pageSize, tagId: tagID })
 
   const tagsData = await getArticleTag()
 
   const authorList = await getAuthorList()
   return {
     props: {
-      listData: listData.data,
+      listData: listData.data.list,
       tagsData: tagsData.data,
       authorList: authorList.data
     }
