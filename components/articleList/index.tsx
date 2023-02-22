@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './index.module.scss'
 
 import { EyeOutlined, LikeOutlined, MessageOutlined } from '@ant-design/icons'
@@ -8,7 +8,7 @@ import { IconText } from '@/components'
 import { NextPage } from 'next'
 import formatTime from '@/utils/formatTime'
 import { useRouter } from 'next/router'
-import InfiniteScroll from 'react-infinite-scroll-component'
+import InfiniteScroll from 'react-infinite-scroller'
 import { getAList } from '@/service/articleData'
 
 export interface ListItem {
@@ -35,36 +35,34 @@ const ArticleList: NextPage<IProps> = ({ listData }) => {
   }
 
   const router = useRouter()
-  const [loading, setLoading] = useState(false)
 
-  const data = [...listData]
-  //使得data动态更新
+  const [tagID, setTagId] = useState(2)
+  const [listItem, setListItem] = useState(listData)
+  const [loading, setLoading] = useState(true)
+  const [hasMore, setHasMore] = useState(true)
 
-  const [list, setList] = useState(data)
-  const [page, setPage] = useState(2)
-  const loadMoreData = async () => {
-    if (loading) {
-      return
+  const getList = async (currentPage: number) => {
+    setLoading(true)
+    const res = await getAList({
+      page: currentPage,
+      pageSize: 10,
+      tagId: tagID
+    })
+    setListItem((list: any) => {
+      return [...list, ...res.data.list]
+    })
+    if (listItem.length >= res.data.total) {
+      setHasMore(false)
     }
-    setLoading(true)
-
-    const pageSize = 10
-    // 调用文章列表接口
-    const newData: any = await (await getAList(page, pageSize)).data
-
-    // 更新数据
-    setList(list.concat(newData))
-
-    setLoading(true)
-    console.log(list)
-
-    // 更新页码
-    setPage(page + 1)
-
-    console.log(page)
   }
+
   useEffect(() => {
-    loadMoreData()
+    if (listItem.length === 0) {
+      setLoading(true)
+      setHasMore(true)
+      setListItem([])
+      getList(1)
+    }
   }, [])
 
   return (
@@ -83,17 +81,14 @@ const ArticleList: NextPage<IProps> = ({ listData }) => {
 
       <div className={styles.list_content}>
         <InfiniteScroll
-          dataLength={list.length}
-          next={loadMoreData}
-          hasMore={list.length < 15}
+          loadMore={(page: number) => getList(page + 1)}
+          hasMore={hasMore}
           loader={<Skeleton paragraph={{ rows: 1 }} active />}
-          endMessage={<Divider plain>没有更多了 🤐</Divider>}
-          scrollableTarget="scrollableDiv"
         >
           <List
             itemLayout="vertical"
             size="large"
-            dataSource={list}
+            dataSource={listItem}
             renderItem={(item: ListItem) => (
               <List.Item
                 key={item.id}
@@ -114,7 +109,9 @@ const ArticleList: NextPage<IProps> = ({ listData }) => {
                 <div className={styles.list_item_content}>
                   <div className={styles.list_item_content_left}>
                     <List.Item.Meta
-                      title={<Link href={''}>{item.title}</Link>}
+                      title={
+                        <Link href={`/article/${item.id}`}>{item.title}</Link>
+                      }
                       description={item.description}
                     />
                     <div className={styles.list_item_content_left_icon}>

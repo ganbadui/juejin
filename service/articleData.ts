@@ -5,12 +5,21 @@ import service from '@/service/fetch'
  * @param page 页码
  * @param pageSize 每页条数
  */
-export const getAList = (page: number, pageSize: number) => {
+export const getAList = ({
+  page,
+  pageSize,
+  tagId
+}: {
+  page: number
+  pageSize: number
+  tagId?: number
+}) => {
   //使用axios请求数据
   return service.get('/api/articleList', {
     params: {
       page,
-      pageSize
+      pageSize,
+      tagId
     }
   })
 }
