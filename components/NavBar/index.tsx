@@ -5,12 +5,16 @@ import { NextPage } from 'next'
 import { HomeContext } from '@/pages'
 import service from '@/service/fetch'
 import classNames from 'classnames'
+import { getAList } from '@/service/articleData'
 
 interface IProps {
   tagsData: any[]
 }
 export const NavBar: NextPage<IProps> = ({ tagsData }) => {
   const [tagId, setTagId] = useState(2)
+
+  const page = 1
+  const pageSize = 15
 
   const { state, dispatch } = useContext(HomeContext)
 
@@ -20,20 +24,10 @@ export const NavBar: NextPage<IProps> = ({ tagsData }) => {
 
   useEffect(() => {
     let filterArticles = []
-    if (tagId !== 2) {
-      service.get(`/api/tagArticle?tagID=${tagId}`).then(res => {
-        filterArticles = res.data as any
-        dispatch({ type: 'UPDATE_TAG', data: filterArticles })
-      })
-    } else if (tagId === 2) {
-      filterArticles = (
-        localStorage.getItem('bigData')
-          ? JSON.parse(localStorage.getItem('bigData') as any)
-          : localStorage.setItem('bigData', JSON.stringify(state.listData))
-      ) as any
-
+    getAList({ page, pageSize, tagId: tagId }).then(res => {
+      filterArticles = res.data as any
       dispatch({ type: 'UPDATE_TAG', data: filterArticles })
-    }
+    })
   }, [tagId])
 
   return (
