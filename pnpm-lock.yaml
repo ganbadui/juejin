@@ -3004,11 +3004,7 @@ packages:
       minimist: 1.2.7
     dev: true
 
-<<<<<<< HEAD
   /mobx-react-lite/3.4.0_woojb62cqeyk443mbl7msrwu2e:
-=======
-  /mobx-react-lite/3.4.0_ugi27ybyvsnb7nnxsswg5nzoty:
->>>>>>> 3610d46b21e6d77954ae2a3c0ee0e59323dbdfb5
     resolution: {integrity: sha512-bRuZp3C0itgLKHu/VNxi66DN/XVkQG7xtoBVWxpvC5FhAqbOCP21+nPhULjnzEqd7xBMybp6KwytdUpZKEgpIQ==}
     peerDependencies:
       mobx: ^6.1.0
@@ -3021,22 +3017,13 @@ packages:
       react-native:
         optional: true
     dependencies:
-<<<<<<< HEAD
       mobx: 6.8.0
-=======
-      mobx: 6.1.0
->>>>>>> 3610d46b21e6d77954ae2a3c0ee0e59323dbdfb5
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     dev: false
 
-<<<<<<< HEAD
   /mobx/6.8.0:
     resolution: {integrity: sha512-+o/DrHa4zykFMSKfS8Z+CPSEg5LW9tSNGTuN8o6MF1GKxlfkSHSeJn5UtgxvPkGgaouplnrLXCF+duAsmm6FHQ==}
-=======
-  /mobx/6.1.0:
-    resolution: {integrity: sha512-AU3z1oIep0wu7BdFFjd/0e0K1SGVcXi0TX8GPKKCkdnQEjJ3w/PgOct63Yk7V0/di/bnxb8+UehWC/Lld+MmeA==}
->>>>>>> 3610d46b21e6d77954ae2a3c0ee0e59323dbdfb5
     dev: false
 
   /mri/1.2.0:
