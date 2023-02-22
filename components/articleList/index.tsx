@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './index.module.scss'
 
 import { EyeOutlined, LikeOutlined, MessageOutlined } from '@ant-design/icons'
@@ -8,7 +8,7 @@ import { IconText } from '@/components'
 import { NextPage } from 'next'
 import formatTime from '@/utils/formatTime'
 import { useRouter } from 'next/router'
-import InfiniteScroll from 'react-infinite-scroll-component'
+import InfiniteScroll from 'react-infinite-scroller'
 import { getAList } from '@/service/articleData'
 
 export interface ListItem {
@@ -37,57 +37,33 @@ const ArticleList: NextPage<IProps> = ({ listData }) => {
   const router = useRouter()
 
   const [tagID, setTagId] = useState(2)
-  const pageSize = 10
-  const [list, setList] = useState(listData)
-  const pageRef = useRef(1)
+  const [listItem, setListItem] = useState(listData)
   const [loading, setLoading] = useState(true)
   const [hasMore, setHasMore] = useState(true)
 
-  const getList = async (isLoadMore?: boolean) => {
+  const getList = async (currentPage: number) => {
     setLoading(true)
     const res = await getAList({
-      page: isLoadMore ? pageRef.current + 1 : 1,
-      pageSize,
+      page: currentPage,
+      pageSize: 10,
       tagId: tagID
     })
-    setLoading(false)
-    if (isLoadMore) {
-      setList([...list, ...res.data.lsit])
-      setPageRef(pageRef.current + 1)
-    } else {
-      setList(res.data.list)
-      setPageRef(1)
+    setListItem((list: any) => {
+      return [...list, ...res.data.list]
+    })
+    if (listItem.length >= res.data.total) {
+      setHasMore(false)
     }
   }
 
   useEffect(() => {
-    getList()
-  }, [])
-  // 用于更新 pageRef
-  const setPageRef = useCallback(
-    (newPage: number) => {
-      pageRef.current = newPage
-    },
-    [pageRef]
-  )
-  const loadMoreData = async () => {
-    if (!loading && hasMore) {
+    if (listItem.length === 0) {
       setLoading(true)
-      const res = await getAList({
-        page: pageRef.current + 1,
-        pageSize,
-        tagId: tagID
-      })
-      setLoading(false)
-      setList(prevList => [...prevList, ...res.data.list])
-      setPageRef(pageRef.current + 1)
-      setHasMore(res.data.list.length > 0 && res.data.list.length === pageSize)
+      setHasMore(true)
+      setListItem([])
+      getList(1)
     }
-  }
-
-  console.log('loading', loading)
-  console.log('hasMore', hasMore)
-  console.log('pageRef', pageRef.current)
+  }, [])
 
   return (
     <div id="scrollableDiv" className={styles.articleList}>
@@ -105,17 +81,14 @@ const ArticleList: NextPage<IProps> = ({ listData }) => {
 
       <div className={styles.list_content}>
         <InfiniteScroll
-          dataLength={list.length}
-          next={loadMoreData}
+          loadMore={(page: number) => getList(page + 1)}
           hasMore={hasMore}
           loader={<Skeleton paragraph={{ rows: 1 }} active />}
-          endMessage={<Divider plain>没有更多了 🤐</Divider>}
-          scrollableTarget="scrollableDiv"
         >
           <List
             itemLayout="vertical"
             size="large"
-            dataSource={list}
+            dataSource={listItem}
             renderItem={(item: ListItem) => (
               <List.Item
                 key={item.id}
