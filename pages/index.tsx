@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useReducer, useRef, createContext } from 'react'
 
 import styles from './index.module.scss'
 import { Brochure, NavBar } from '@/components'
@@ -10,6 +10,8 @@ import { useStore } from '@/store'
 import { observer } from 'mobx-react-lite'
 import classNames from 'classnames'
 import { IAuthor } from '@/components/Brochure/types/author'
+
+export const HomeContext = createContext<any>({})
 
 interface IProps {
   listData: ListItem[]
@@ -28,18 +30,42 @@ function Home({ listData, tagsData, authorList }: IProps) {
     }
   })
 
+  const initialState: IProps = {
+    listData,
+    tagsData,
+    authorList
+  }
+
+  function reducer(state: IProps, action: any) {
+    switch (action.type) {
+      case 'UPDATE_TAG':
+        return {
+          ...state,
+          listData: action.data.list
+        }
+      default:
+        return initialState
+    }
+  }
+
+  const [state, dispatch] = useReducer(reducer, initialState)
+
   return (
     <div className={styles.Home}>
       <div className={styles.container}>
-        <nav className={classNames(styles.nav, { move: store.needMove })}>
-          <NavBar tagsData={tagsData} />
-        </nav>
-        <div className={styles.content}>
-          <ArticleList listData={listData} />
-          <div className={styles.rightcontent}>
-            <Brochure authorList={authorList} />
+        <HomeContext.Provider value={{ state, dispatch }}>
+          <nav className={classNames(styles.nav, { move: store.needMove })}>
+            <NavBar tagsData={state.tagsData} />
+          </nav>
+          <div className={styles.content}>
+            <ArticleList listData={state.listData} />
+            <div className={styles.rightcontent}>
+              <div className={styles.rightcontent}>
+                <Brochure authorList={authorList} />
+              </div>
+            </div>
           </div>
-        </div>
+        </HomeContext.Provider>
       </div>
     </div>
   )
@@ -48,15 +74,17 @@ function Home({ listData, tagsData, authorList }: IProps) {
 export const getServerSideProps: GetServerSideProps = async () => {
   const page = 1
   const pageSize = 15
-  const listData = await getAList(page, pageSize)
+  const tagID = 2
+
+  //传入tagID
+  const listData = await getAList({ page, pageSize, tagId: tagID })
 
   const tagsData = await getArticleTag()
 
   const authorList = await getAuthorList()
-  console.log(authorList)
   return {
     props: {
-      listData: listData.data,
+      listData: listData.data.list,
       tagsData: tagsData.data,
       authorList: authorList.data
     }

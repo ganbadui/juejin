@@ -27,6 +27,7 @@ interface IProps {
 const ArticleList: NextPage<IProps> = ({ listData }) => {
   const [active, setActive] = useState('推荐')
   const listTopData = ['推荐', '最新', '最热']
+
   const handleClick = (label: string) => {
     setActive(label)
     //todo: 请求数据

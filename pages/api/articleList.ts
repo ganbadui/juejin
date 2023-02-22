@@ -6,7 +6,7 @@ const getArticleList = async (
   res: NextApiResponse
 ): Promise<void> => {
   //分页查询文章列表
-  const { page, pageSize } = req.query
+  const { page, pageSize, tagId } = req.query
   // 获得作者、标签、发布时间、文章标题、文章描述、文章id
   const result: any = await bffService.get(
     `api/acticles?fields=id,title,description,createdAt&pagination[page]=${page}&pagination[pageSize]=${pageSize}&populate=*`
@@ -21,11 +21,12 @@ const getArticleList = async (
       const description = item.description
       let cover = item.cover
       const tag = item.acticle_tag.tagName
+      const isTagId = item.acticle_tag.id
       const author = item.user_info.user_name
       const publishTime = item.createdAt
 
       if (cover) {
-        cover = 'https://api.skyseek.top' + cover[0].url
+        cover = 'https://api.skyseek.top' + cover[0].formats.small.url
       }
 
       return {
@@ -34,14 +35,33 @@ const getArticleList = async (
         description: description,
         avatar: cover,
         tag: tag,
+        isTagId: isTagId,
         author: author,
         publishTime: publishTime
       }
     })
 
-    res.status(200).json({
-      data: list
-    })
+    // 根据标签id筛选list中的数据，并返回
+
+    if (tagId) {
+      const tagList = list.filter((item: any) => {
+        return item.isTagId === Number(tagId)
+      })
+      res.status(200).json({
+        data: {
+          list: tagList,
+          code: 200
+        }
+      })
+    } else {
+      res.status(200).json({
+        data: {
+          list: list,
+          code: 200
+        }
+      })
+    }
+
     if (result.data.length === 0) {
       //直接返回加载的数据为空
       res.status(200).json({
