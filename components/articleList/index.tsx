@@ -109,7 +109,9 @@ const ArticleList: NextPage<IProps> = ({ listData }) => {
                 <div className={styles.list_item_content}>
                   <div className={styles.list_item_content_left}>
                     <List.Item.Meta
-                      title={<Link href={''}>{item.title}</Link>}
+                      title={
+                        <Link href={`/article/${item.id}`}>{item.title}</Link>
+                      }
                       description={item.description}
                     />
                     <div className={styles.list_item_content_left_icon}>
