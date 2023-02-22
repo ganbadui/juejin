@@ -45,7 +45,14 @@ const Tab: NextPage = () => {
       <div className={classNames(styles.navbar, { move: store.needMove })}>
         <div className={styles.wrppper}>
           <section className={styles.logoArea}>
-            <Image src="/logo.svg" width={107} height={22} alt="图片加载失败" />
+            <Link href="/">
+              <Image
+                src="/logo.svg"
+                width={107}
+                height={22}
+                alt="图片加载失败"
+              />
+            </Link>
           </section>
           <section className={styles.linkArea}>
             {tags?.map(nav => (

@@ -14,6 +14,10 @@ const getArticleList = async (
 
   try {
     const data = result.data
+    const meta = result.meta
+
+    //页面总数
+    const total = meta.pagination.total
 
     const list = data.map((item: any) => {
       const id = item.id
@@ -50,6 +54,7 @@ const getArticleList = async (
       res.status(200).json({
         data: {
           list: tagList,
+          total: total,
           code: 200
         }
       })
@@ -57,6 +62,7 @@ const getArticleList = async (
       res.status(200).json({
         data: {
           list: list,
+          total: total,
           code: 200
         }
       })
